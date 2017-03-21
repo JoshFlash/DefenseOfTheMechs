@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: e763e59467000324bb5c548b77da1c42
+timeCreated: 1486645826
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Knights Quest
+  fontNames:
+  - Knights Quest
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

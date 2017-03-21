@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - projectile
+  - enemy
+  - lazer
+  - ground
+  - owned tower
+  - new tower
+  - path
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Enemy
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: background
+    uniqueID: 1375137941
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: projectiles
+    uniqueID: 2996627291
+    locked: 0
+  - name: towers
+    uniqueID: 2965036679
+    locked: 0
+  - name: UI
+    uniqueID: 1119978877
+    locked: 0

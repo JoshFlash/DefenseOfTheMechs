@@ -1,0 +1,252 @@
+fileFormatVersion: 2
+guid: 5f7ff46ee947fac47ae20a82ea5ee878
+timeCreated: 1490065421
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BaseTowerMatrix_0
+    21300002: BaseTowerMatrix_1
+    21300004: BaseTowerMatrix_2
+    21300006: BaseTowerMatrix_3
+    21300008: BaseTowerMatrix_4
+    21300010: BaseTowerMatrix_5
+    21300012: BaseTowerMatrix_6
+    21300014: BaseTowerMatrix_7
+    21300016: BaseTowerMatrix_8
+    21300018: BaseTowerMatrix_9
+    21300020: BaseTowerMatrix_10
+    21300022: BaseTowerMatrix_11
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BaseTowerMatrix_0
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 896
+        width: 151
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_1
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 896
+        width: 148
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_2
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 891
+        width: 148
+        height: 274
+      alignment: 9
+      pivot: {x: 0.5000004, y: 0.4002035}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_3
+      rect:
+        serializedVersion: 2
+        x: 732
+        y: 890
+        width: 148
+        height: 274
+      alignment: 9
+      pivot: {x: 0.5000004, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_4
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 654
+        width: 149
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_5
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 651
+        width: 157
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_6
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 605
+        width: 157
+        height: 277
+      alignment: 9
+      pivot: {x: 0.5, y: 0.413}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_7
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 599
+        width: 157
+        height: 277
+      alignment: 9
+      pivot: {x: 0.48925975, y: 0.41354823}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 418
+        width: 151
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_9
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 410
+        width: 157
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 174
+        width: 151
+        height: 202
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BaseTowerMatrix_11
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 166
+        width: 157
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
