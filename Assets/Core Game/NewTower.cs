@@ -15,7 +15,6 @@ public class NewTower : MonoBehaviour {
 	[SerializeField] private Color placeableColor;
 	[SerializeField] private Color unplaceableColor;
 	[SerializeField] private GameObject towerTypePrefab;
-	[SerializeField] private Camera _camera;
 
 	void Awake() {
 		towerIsPlaceable = false;
@@ -24,7 +23,7 @@ public class NewTower : MonoBehaviour {
 
 	void Start() {
 		spriteRend = GetComponent<SpriteRenderer>();
-		cameraDistance = -_camera.transform.position.z;
+		cameraDistance = -Camera.main.transform.position.z;
 		defaultPosition = transform.position;
 	}
 
@@ -44,7 +43,7 @@ public class NewTower : MonoBehaviour {
 	}
 
 	void MoveTower() {
-		transform.position = _camera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraDistance));
+		transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, cameraDistance));
 	}
 
 	void CheckIfTowerIsPlaceable() {

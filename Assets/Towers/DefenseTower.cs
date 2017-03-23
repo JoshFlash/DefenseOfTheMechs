@@ -31,6 +31,7 @@ public class DefenseTower : MonoBehaviour {
 	private void Awake() {
 		spriteRend = GetComponent<SpriteRenderer>();
 		towerRadial = transform.GetChild(0).gameObject;
+		tag = "owned tower";
 	}
 
 	private void Start() {
@@ -131,7 +132,7 @@ public class DefenseTower : MonoBehaviour {
 
 	public virtual void ShootAtEnemy() {
 		if (hasEnemyTarget && !isFiringAtEnemy) {
-			StartCoroutine(FireProjectile(projectilePrefab, 1 / fireRate));
+			StartCoroutine(FireProjectile(projectilePrefab, 1 / (1.4f*fireRate)));
 			isFiringAtEnemy = true;
 		}
 	}
@@ -141,6 +142,7 @@ public class DefenseTower : MonoBehaviour {
 		while (hasEnemyTarget) {
 			proj = Instantiate(projectilePrefab, this.transform.position + this.transform.right * gunOffset + this.transform.up * gunLength , this.transform.rotation);
 			InitProjectile(proj);
+			delay = 1 / fireRate;
 			yield return new WaitForSeconds(delay);
 		}
 		isFiringAtEnemy = false;

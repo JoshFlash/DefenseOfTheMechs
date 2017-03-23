@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
 	public float distanceTraversed;
 	public float speed;
 	public float health;
+	public int value;
 
 	void Awake() {
 		distanceTraversed = 0f;
@@ -41,6 +42,7 @@ public class Enemy : MonoBehaviour {
 		float anim_length = 0.06f;
 		Destroy(gameObject, anim_length);
 		EnemySpawner.enemiesSpawned--;
+		MoneyManager.CollectInLevelCash(value);
 		Invoke("EnemySpawner.ClearNullEnemies", anim_length + Time.deltaTime);
 	}
 

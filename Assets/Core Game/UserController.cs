@@ -6,13 +6,25 @@ public class UserController : MonoBehaviour {
 
 	public static GameObject selectedTower;
 
-
 	private void Update() {
 		TestMethod();
+		SetSelectedTowerToNull();
 	}
 
 	void HandleActiveTower() {
 
+	}
+
+	void SetSelectedTowerToNull() {
+		if (Input.GetMouseButtonDown(0)) {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit)) {
+				if (hit.collider.tag != "owned tower") {
+					selectedTower = null;
+				}
+			}
+		}
 	}
 
 

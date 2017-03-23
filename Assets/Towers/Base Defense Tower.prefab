@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212306587295672588}
   - component: {fileID: 114720451386450580}
   m_Layer: 0
-  m_Name: Tower Sight
+  m_Name: Tower Radial
   m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 23335475817594894}
   m_Layer: 0
   m_Name: Tower Placement
-  m_TagString: Untagged
+  m_TagString: owned tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 23199295264538794}
   m_Layer: 0
   m_Name: Tower Placement
-  m_TagString: Untagged
+  m_TagString: owned tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1608937617697122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.09, y: 3.29, z: 0}
+  m_LocalPosition: {x: 8.51, y: -2.99, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_Children:
   - {fileID: 4885452087895104}
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 0.8
-  fireRateBoost: 0
+  fireRateBoost: 0.6
   towerRange: 1.8
   towerRangeBoost: 0.6
   projectileThrust: 8.2
