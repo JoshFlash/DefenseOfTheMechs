@@ -12,6 +12,6 @@ public class GoldCounter : MonoBehaviour {
 	}
 
 	void Update() {
-		goldText.text = "RoboGold: " + MoneyManager.inLevelCash.ToString();
+		goldText.text = "  BotCoin: \n    " + MoneyManager.inLevelCash.ToString() + "\n Round:  " + (RoundManager.round-1);
 	}
 }

@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour {
 	public static List<Enemy> allEnemies;
 	public static int enemiesSpawned;
 
-	public Enemy basicEnemy;
+	public List<Enemy> enemyTypes;
 
 	void Awake() {
 		allEnemies = new List<Enemy>();

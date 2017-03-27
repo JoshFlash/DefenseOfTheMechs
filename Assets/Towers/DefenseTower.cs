@@ -5,12 +5,18 @@ using UnityEngine;
 
 public class DefenseTower : MonoBehaviour {
 
-	public float fireRate, fireRateBoost;       //in shots per second
+	public float gunWarmTime;               //time (in seconds) before first shooting at enemies after targeting
+	public float fireRate, fireRateBoost;   //in shots per second
 	public float towerRange, towerRangeBoost;
 	public float projectileThrust, projectileDamage;
 	public int projectileMultiHit = 1;
+	public int alphaUpgradeLevel = 0;
+	public int betaUpgradeLevel = 0;
+	public int alphaUpgradeCost, betaUpgradeCost;
+	public int[] alphaUpgradeCosts, betaUpgradeCosts;
 
-	private int alphaUpgradeLevel, betaUpgradeLevel = 0;
+	public bool doubleShot = false;
+
 	private int _enemiesSpawned;
 	private bool hasEnemyTarget;
 	private bool isFiringAtEnemy;
@@ -22,11 +28,16 @@ public class DefenseTower : MonoBehaviour {
 	private List<Enemy> targetableEnemies;
 	private Enemy enemyTarget;
 
-	[SerializeField] private float gunLength, gunOffset;
-	[SerializeField] private int maxAlphaUpgradeLevel, maxBetaUpgradeLevel;
-	[SerializeField] private TargetPriority targetPriority;
-	[SerializeField] private Projectile projectilePrefab;
-	[SerializeField] private List<Sprite> upgradeSprites;
+	[SerializeField]
+	private float gunLength, gunOffset;
+	[SerializeField]
+	private int maxAlphaUpgradeLevel, maxBetaUpgradeLevel;
+	[SerializeField]
+	private TargetPriority targetPriority;
+	[SerializeField]
+	private Projectile projectilePrefab;
+	[SerializeField]
+	private List<Sprite> upgradeSprites;
 
 	private void Awake() {
 		spriteRend = GetComponent<SpriteRenderer>();
@@ -35,6 +46,8 @@ public class DefenseTower : MonoBehaviour {
 	}
 
 	private void Start() {
+		alphaUpgradeCost = alphaUpgradeCosts[0];
+		betaUpgradeCost = betaUpgradeCosts[0];
 		spriteRend.sortingLayerName = "towers";
 		enemyTarget = null;
 		towerRadial.SetActive(false);
@@ -45,7 +58,7 @@ public class DefenseTower : MonoBehaviour {
 		TargetEnemy();
 		if (enemyTarget != null) LookAtEnemy();
 		if (targetableEnemies.Count == 0) ClearEnemyTarget();
-		ShootAtEnemy();
+		StartShootAtEnemy();
 		ShowContextIfActive();
 
 	}
@@ -57,8 +70,7 @@ public class DefenseTower : MonoBehaviour {
 	void ShowContextIfActive() {
 		if (UserController.selectedTower == this.gameObject) {
 			towerRadial.SetActive(true);
-		}
-		else { towerRadial.SetActive(false); }
+		} else { towerRadial.SetActive(false); }
 	}
 
 	void ClearEnemyTarget() {
@@ -124,28 +136,33 @@ public class DefenseTower : MonoBehaviour {
 	}
 
 	public void ChangeTargetPriorty(string priority) {
-		if		(priority == "FIRST")	{ targetPriority = TargetPriority.FIRST; } 
-		else if (priority == "LAST")	{ targetPriority = TargetPriority.LAST; } 
-		else if (priority == "STRONG")	{ targetPriority = TargetPriority.STRONG; } 
-		else if (priority == "FAST")	{ targetPriority = TargetPriority.FAST; }
+		if (priority == "FIRST") { targetPriority = TargetPriority.FIRST; } else if (priority == "LAST") { targetPriority = TargetPriority.LAST; } else if (priority == "STRONG") { targetPriority = TargetPriority.STRONG; } else if (priority == "FAST") { targetPriority = TargetPriority.FAST; }
 	}
 
-	public virtual void ShootAtEnemy() {
+	void StartShootAtEnemy() {
 		if (hasEnemyTarget && !isFiringAtEnemy) {
-			StartCoroutine(FireProjectile(projectilePrefab, 1 / (1.4f*fireRate)));
+			StartCoroutine(ShootAtEnemy(gunWarmTime));
 			isFiringAtEnemy = true;
 		}
 	}
 
-	private IEnumerator FireProjectile(Projectile proj, float delay) {
+	protected virtual IEnumerator ShootAtEnemy(float delay) {
 		yield return new WaitForSeconds(delay);
 		while (hasEnemyTarget) {
-			proj = Instantiate(projectilePrefab, this.transform.position + this.transform.right * gunOffset + this.transform.up * gunLength , this.transform.rotation);
-			InitProjectile(proj);
+			FireProjectile();
 			delay = 1 / fireRate;
+			if (doubleShot) {
+				yield return new WaitForSeconds(0.1f);
+				FireProjectile();
+			}
 			yield return new WaitForSeconds(delay);
 		}
 		isFiringAtEnemy = false;
+	}
+
+	private void FireProjectile() {
+		Projectile proj = Instantiate(projectilePrefab, this.transform.position + this.transform.right * gunOffset + this.transform.up * gunLength, this.transform.rotation);
+		InitProjectile(proj);
 	}
 
 	public void InitProjectile(Projectile proj) {
@@ -164,14 +181,22 @@ public class DefenseTower : MonoBehaviour {
 				case 0:
 					fireRate += fireRateBoost;
 					projectileThrust *= 1.2f;
+					gunWarmTime = 0.75f;
+					MoneyManager.SpendInLevelCash(alphaUpgradeCost);
+					alphaUpgradeCost = alphaUpgradeCosts[alphaUpgradeLevel+1];
 					break;
 				case 1:
-
+					fireRate += fireRateBoost;
 					maxBetaUpgradeLevel = 1;
+					gunWarmTime = 0.3f;
+					MoneyManager.SpendInLevelCash(alphaUpgradeCost);
+					alphaUpgradeCost = alphaUpgradeCosts[alphaUpgradeLevel+1];
 					break;
 				case 2:
-
+					doubleShot = true;
+					MoneyManager.SpendInLevelCash(alphaUpgradeCost);
 					break;
+				default: break;
 			}
 			alphaUpgradeLevel++;
 			SetTowerSprite();
@@ -185,22 +210,36 @@ public class DefenseTower : MonoBehaviour {
 				case 0:
 					towerRange += towerRangeBoost;
 					GetComponentInChildren<TowerRadial>().UpgradeSight();
+					MoneyManager.SpendInLevelCash(betaUpgradeCost);
+					betaUpgradeCost = betaUpgradeCosts[betaUpgradeLevel+1];
 					break;
 				case 1:
-
+					towerRangeBoost *= 1.5f;
+					towerRange += towerRangeBoost;
+					gunLength *= 1.8f;
+					projectileThrust *= 1.5f;
+					GetComponentInChildren<TowerRadial>().UpgradeSight();
 					maxAlphaUpgradeLevel = 1;
+					transform.localScale = new Vector3(transform.localScale.x * 0.96f, transform.localScale.y * 0.96f, 1);
+					MoneyManager.SpendInLevelCash(betaUpgradeCost);
+					betaUpgradeCost = betaUpgradeCosts[betaUpgradeLevel + 1];
 					break;
 				case 2:
-
+					gunWarmTime *= 0.8f;
+					projectileThrust *= 1.5f;
+					projectileDamage *= 2.02f;
+					projectileMultiHit = 2;
+					MoneyManager.SpendInLevelCash(betaUpgradeCost);
 					break;
+				default: break;
 			}
 			betaUpgradeLevel++;
 			SetTowerSprite();
 		}
 	}
 
-	public virtual void SetTowerSprite() {
-		if (alphaUpgradeLevel == 0 ) {
+	protected virtual void SetTowerSprite() {
+		if (alphaUpgradeLevel == 0) {
 			spriteRend.sprite = upgradeSprites[betaUpgradeLevel];
 		}
 		if (alphaUpgradeLevel == 1) {
@@ -242,4 +281,45 @@ public class DefenseTower : MonoBehaviour {
 		/// </summary> 
 
 	}
+
+	public virtual string AlphaUpgradeText(int alphaLevel) {
+		switch (alphaLevel) {
+			case 0:
+				return "Increases Fire Rate of this Mech";
+			case 1:
+				if (betaUpgradeLevel >= 2) {
+					return "UPGRADE UNAVAILABLE";
+				}
+				return "Further increases Fire Rate and reduces Aim Time";
+			case 2:
+				if (betaUpgradeLevel >= 2) {
+					return "UPGRADE UNAVAILABLE";
+				}
+				return "DoubleShot: This Mech will fire two lazers with each shot!";
+			case 3:
+				return "NO FURTHER UPGRADES AVAILABLE";
+			default: return "ERr0R %<\0>";
+		}
+	}
+
+	public virtual string BetaUpgradeText(int betaLevel) {
+		switch (betaLevel) {
+			case 0:
+				return "Increases Range of this Mech";
+			case 1:
+				if (alphaUpgradeLevel >= 2) {
+					return "UPGRADE UNAVAILABLE";
+				}
+				return "Greatly increases Range of this mech & lazers fly faster";
+			case 2:
+				if (alphaUpgradeLevel >= 2) {
+					return "UPGRADE UNAVAILABLE";
+				}
+				return "LazerBlazer: Mech's lazers can hit 2 enemies and deal double damage!";
+			case 3:
+				return "NO FURTHER UPGRADES AVAILABLE";
+			default: return "ERr0R %<\0>";
+		}
+	}
+
 }

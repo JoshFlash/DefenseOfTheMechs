@@ -11,6 +11,7 @@ TagManager:
   - owned tower
   - new tower
   - path
+  - upgrades
   layers:
   - Default
   - TransparentFX

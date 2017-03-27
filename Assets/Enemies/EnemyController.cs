@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour {
 	}
 	
 	void Update () {
+		LookAtWaypoint();
 		MoveByWaypoints();
 		
 	}
@@ -32,7 +33,6 @@ public class EnemyController : MonoBehaviour {
 			}
 		}
 		MoveToNextWayPoint();
-		LookAtWaypoint();
 	}
 
 	void MoveToNextWayPoint() {
@@ -41,5 +41,6 @@ public class EnemyController : MonoBehaviour {
 	}
 	void LookAtWaypoint() {
 		transform.up = Vector3.Slerp(transform.up,(nextWaypoint.transform.position - transform.position),Time.fixedDeltaTime*4f);
+		transform.rotation *= Quaternion.Euler(0,0,1);
 	}
 }
