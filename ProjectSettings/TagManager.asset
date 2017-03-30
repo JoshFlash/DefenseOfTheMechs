@@ -49,14 +49,14 @@ TagManager:
   - name: background
     uniqueID: 1375137941
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: projectiles
     uniqueID: 2996627291
     locked: 0
   - name: towers
     uniqueID: 2965036679
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: UI
     uniqueID: 1119978877

@@ -5,76 +5,117 @@ using UnityEngine;
 
 public class UserController : MonoBehaviour {
 
+	public bool dev_GodSpeed;
 	public static GameObject selectedTower;
 
 	public bool alphaButtonPressed, betaButtonPressed;
-	private Text upgradeText;
 	private bool doubleTimeOn = false;
 
 	[SerializeField] private GameObject contextMenu;
+	[SerializeField] private GameObject towerMenu;
+	[SerializeField] private GameObject upgradeMenu;
+
 
 	private void Awake() {
 		Application.targetFrameRate = 80;
 		contextMenu.SetActive(false);
+		towerMenu.SetActive(false);
+		upgradeMenu.SetActive(false);
 	}
 
 	private void Update() {
-		SetSelectedTowerToNull();
+		if (ClickedOnGround()) SelectNullTower();
+		if (ClickedOnTower()) HandleContextMenu();
+		ToggleQuadTime();
 	}
 
 	public void HandleContextMenu() {
-		if (selectedTower && alphaButtonPressed) {
-			contextMenu.SetActive(true);
-		} else if (selectedTower && betaButtonPressed) {
-			contextMenu.SetActive(true);
-		} else if (selectedTower) {
-			contextMenu.SetActive(true); 
-		} else {
+		if (ClickedOnGround()) {
 			contextMenu.SetActive(false);
+		} else if (ClickedOnTower()) {
+			upgradeMenu.SetActive(false);
+			contextMenu = towerMenu;
+			contextMenu.SetActive(true);
+		} else {
+			contextMenu.SetActive(true);
 		}
 	}
 
 	public void PressAlphaButton() {
-		betaButtonPressed = false;
-		alphaButtonPressed = true;
-		HandleContextMenu();
-		UpgradeText.SetAlphaUpgradeText();
+		if (selectedTower) {
+			betaButtonPressed = false;
+			alphaButtonPressed = true;
+			towerMenu.SetActive(false);
+			contextMenu = upgradeMenu;
+			HandleContextMenu();
+			UpgradeText.SetAlphaUpgradeText();
+		}
 	}
 
 	public void PressBetaButton() {
-		alphaButtonPressed = false;
-		betaButtonPressed = true;
-		HandleContextMenu();
-		UpgradeText.SetBetaUpgradeText();
+		if (selectedTower) {
+			alphaButtonPressed = false;
+			betaButtonPressed = true;
+			towerMenu.SetActive(false);
+			contextMenu = upgradeMenu;
+			HandleContextMenu();
+			UpgradeText.SetBetaUpgradeText();
+		}
 	}
 
 	public void PressBuyButton() {
 		if		(alphaButtonPressed) {
 			if (selectedTower.GetComponent<DefenseTower>().alphaUpgradeCost <= MoneyManager.inLevelCash) {
 				selectedTower.GetComponent<DefenseTower>().UpgradeAlphaPath();
+				UpgradeText.SetAlphaUpgradeText();
 			}
 		}
 		else if (betaButtonPressed) {
 			if (selectedTower.GetComponent<DefenseTower>().betaUpgradeCost <= MoneyManager.inLevelCash) {
 				selectedTower.GetComponent<DefenseTower>().UpgradeBetaPath();
+				UpgradeText.SetBetaUpgradeText();
 			}
 		}
-		contextMenu.SetActive(false);
 	}
 
-	void SetSelectedTowerToNull() {
+	public void PressSellButton() {
+		MoneyManager.inLevelCash += selectedTower.GetComponent<DefenseTower>().sellValue;
+		selectedTower.SetActive(false);
+	}
+
+	bool ClickedOnGround() {
 		if (Input.GetMouseButtonDown(0)) {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit)) {
 				if (hit.collider.tag == "ground") {
-					selectedTower = null;
-					alphaButtonPressed = false;
-					betaButtonPressed = false;
-					HandleContextMenu();
+					return true;
 				}
 			}
 		}
+		return false;
+	}
+
+	bool ClickedOnTower() {
+		if (Input.GetMouseButtonDown(0)) {
+			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			RaycastHit hit;
+			if (Physics.Raycast(ray, out hit)) {
+				if (hit.collider.tag == "owned tower") {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	void SelectNullTower() {
+		selectedTower = null;
+		towerMenu.SetActive(false);
+		upgradeMenu.SetActive(false);
+		alphaButtonPressed = false;
+		betaButtonPressed = false;
+		HandleContextMenu();
 	}
 
 	public void ToggleDoubleTime() {
@@ -85,6 +126,17 @@ public class UserController : MonoBehaviour {
 			Time.timeScale = 1f;
 		}
 		doubleTimeOn = !doubleTimeOn;
+	}
+
+	public void ToggleQuadTime() {
+		if (dev_GodSpeed) {
+			if (Input.GetKeyDown(KeyCode.LeftControl)) {
+				Time.timeScale = 4.2f;
+			}
+			if (Input.GetKeyUp(KeyCode.LeftControl)) {
+				Time.timeScale = 1f;
+			}
+		}
 	}
 
 }

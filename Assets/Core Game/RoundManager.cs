@@ -15,7 +15,6 @@ public class RoundManager : MonoBehaviour {
 		round = 1;
 	}
 
-
 	public void ResetRounds() {
 		round = 1;
 	}
@@ -44,6 +43,20 @@ public class RoundManager : MonoBehaviour {
 					round++;
 					break;
 
+				case 4:
+					StartCoroutine(Round4());
+					round++;
+					break;
+
+				case 5:
+					StartCoroutine(Round5());
+					round++;
+					break;
+
+				case 6:
+					StartCoroutine(Round6());
+					round++;
+					break;
 
 
 
@@ -89,6 +102,42 @@ public class RoundManager : MonoBehaviour {
 		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[0], 6, 0.6f));
 		yield return isRoundOver = true;
 		MoneyManager.CollectInLevelCash(30);
+	}
+
+	IEnumerator Round4() {
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[0], 6, 0.6f));
+		yield return new WaitForSeconds(2);
+					 StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[0], 8, 0.8f));
+		yield return new WaitForSeconds(0.4f);
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[1], 6, 0.8f));
+		yield return new WaitForSeconds(2);
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[1], 6, 0.6f));
+		yield return new WaitForSeconds(1.6f);
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[0], 6, 0.6f));
+		yield return isRoundOver = true;
+		MoneyManager.CollectInLevelCash(30);
+	}
+
+	IEnumerator Round5() {
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[1], 16, 0.6f));
+		yield return new WaitForSeconds(2);
+					 StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[1], 8, 0.8f));
+		yield return new WaitForSeconds(0.4f);
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[1], 8, 0.8f));
+		yield return isRoundOver = true;
+		MoneyManager.CollectInLevelCash(37);
+	}
+
+	IEnumerator Round6() {
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[2], 6, 1.1f));
+		yield return new WaitForSeconds(1);
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[1], 8, 0.8f));
+		yield return new WaitForSeconds(1);
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[1], 8, 0.6f));
+		yield return new WaitForSeconds(1);
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[2], 6, 0.7f));
+		yield return isRoundOver = true;
+		MoneyManager.CollectInLevelCash(42);
 	}
 
 		IEnumerator DefaultRound() {

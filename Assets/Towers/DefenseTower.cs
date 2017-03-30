@@ -14,6 +14,7 @@ public class DefenseTower : MonoBehaviour {
 	public int betaUpgradeLevel = 0;
 	public int alphaUpgradeCost, betaUpgradeCost;
 	public int[] alphaUpgradeCosts, betaUpgradeCosts;
+	public int sellValue;
 
 	public bool doubleShot = false;
 
@@ -59,7 +60,7 @@ public class DefenseTower : MonoBehaviour {
 		if (enemyTarget != null) LookAtEnemy();
 		if (targetableEnemies.Count == 0) ClearEnemyTarget();
 		StartShootAtEnemy();
-		ShowContextIfActive();
+		ShowRadialIfSelected();
 
 	}
 
@@ -67,7 +68,7 @@ public class DefenseTower : MonoBehaviour {
 		UserController.selectedTower = this.gameObject;
 	}
 
-	void ShowContextIfActive() {
+	void ShowRadialIfSelected() {
 		if (UserController.selectedTower == this.gameObject) {
 			towerRadial.SetActive(true);
 		} else { towerRadial.SetActive(false); }
@@ -136,7 +137,10 @@ public class DefenseTower : MonoBehaviour {
 	}
 
 	public void ChangeTargetPriorty(string priority) {
-		if (priority == "FIRST") { targetPriority = TargetPriority.FIRST; } else if (priority == "LAST") { targetPriority = TargetPriority.LAST; } else if (priority == "STRONG") { targetPriority = TargetPriority.STRONG; } else if (priority == "FAST") { targetPriority = TargetPriority.FAST; }
+		if		(priority == "FIRST")	{ targetPriority = TargetPriority.FIRST; } 
+		else if (priority == "LAST")	{ targetPriority = TargetPriority.LAST; } 
+		else if (priority == "STRONG")	{ targetPriority = TargetPriority.STRONG; } 
+		else if (priority == "FAST")	{ targetPriority = TargetPriority.FAST; }
 	}
 
 	void StartShootAtEnemy() {
@@ -183,6 +187,7 @@ public class DefenseTower : MonoBehaviour {
 					projectileThrust *= 1.2f;
 					gunWarmTime = 0.75f;
 					MoneyManager.SpendInLevelCash(alphaUpgradeCost);
+					sellValue += (int)( 0.7 * alphaUpgradeCost );
 					alphaUpgradeCost = alphaUpgradeCosts[alphaUpgradeLevel+1];
 					break;
 				case 1:
@@ -190,11 +195,13 @@ public class DefenseTower : MonoBehaviour {
 					maxBetaUpgradeLevel = 1;
 					gunWarmTime = 0.3f;
 					MoneyManager.SpendInLevelCash(alphaUpgradeCost);
+					sellValue += (int)( 0.7 * alphaUpgradeCost );
 					alphaUpgradeCost = alphaUpgradeCosts[alphaUpgradeLevel+1];
 					break;
 				case 2:
 					doubleShot = true;
 					MoneyManager.SpendInLevelCash(alphaUpgradeCost);
+					sellValue += (int)( 0.7 * alphaUpgradeCost );
 					break;
 				default: break;
 			}
@@ -211,6 +218,7 @@ public class DefenseTower : MonoBehaviour {
 					towerRange += towerRangeBoost;
 					GetComponentInChildren<TowerRadial>().UpgradeSight();
 					MoneyManager.SpendInLevelCash(betaUpgradeCost);
+					sellValue += (int)( 0.7 * betaUpgradeCost );
 					betaUpgradeCost = betaUpgradeCosts[betaUpgradeLevel+1];
 					break;
 				case 1:
@@ -222,6 +230,7 @@ public class DefenseTower : MonoBehaviour {
 					maxAlphaUpgradeLevel = 1;
 					transform.localScale = new Vector3(transform.localScale.x * 0.96f, transform.localScale.y * 0.96f, 1);
 					MoneyManager.SpendInLevelCash(betaUpgradeCost);
+					sellValue += (int)( 0.7 * betaUpgradeCost );
 					betaUpgradeCost = betaUpgradeCosts[betaUpgradeLevel + 1];
 					break;
 				case 2:
@@ -230,6 +239,7 @@ public class DefenseTower : MonoBehaviour {
 					projectileDamage *= 2.02f;
 					projectileMultiHit = 2;
 					MoneyManager.SpendInLevelCash(betaUpgradeCost);
+					sellValue += (int)( 0.7 * betaUpgradeCost );
 					break;
 				default: break;
 			}

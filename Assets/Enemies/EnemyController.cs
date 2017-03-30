@@ -28,6 +28,7 @@ public class EnemyController : MonoBehaviour {
 		if (distanceToWaypoint <= pointRadius) {
 			if (pointNumber+1 >= WaypointManager.levelWaypoints.Length) {
 				Destroy(gameObject);
+				EscapedText.AddToEscapedNumber();
 			} else {
 				nextWaypoint = WaypointManager.levelWaypoints[++pointNumber];
 			}
