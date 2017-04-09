@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class EscapedText : MonoBehaviour {
+public class EscapedText : MonoBehaviour
+{
 
 	public Text text;
 	public static int escaped = 0;

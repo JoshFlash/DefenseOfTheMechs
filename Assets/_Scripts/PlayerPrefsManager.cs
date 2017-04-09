@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPrefsManager : MonoBehaviour {
+public class PlayerPrefsManager : MonoBehaviour
+{
 
 	const string MUSIC_VOLUME_KEY = "music_volume";
 	const string SFX_VOLUME_KEY = "sfx_volume";

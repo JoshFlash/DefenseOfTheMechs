@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class GoldCounter : MonoBehaviour {
+public class GoldCounter : MonoBehaviour
+{
 
 	private Text goldText;
 
@@ -12,6 +13,6 @@ public class GoldCounter : MonoBehaviour {
 	}
 
 	void Update() {
-		goldText.text = "  BotCoin: \n    " + MoneyManager.inLevelCash.ToString() + "\n Round:  " + (RoundManager.round-1);
+		goldText.text = "  ɃotCoin: \n    " + MoneyManager.inLevelCash.ToString() + "\n Round:  " + (RoundManager.round-1);
 	}
 }

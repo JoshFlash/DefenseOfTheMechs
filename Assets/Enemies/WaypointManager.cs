@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Flash.Feather;
 
-public class WaypointManager : MonoBehaviour {
+public class WaypointManager : MonoBehaviour
+{
 
 	public static Waypoint[] levelWaypoints;
 

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class UpgradeText : MonoBehaviour {
+public class UpgradeText : MonoBehaviour
+{
 
 	public static Text upgradeText;
 

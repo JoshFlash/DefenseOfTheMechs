@@ -3,7 +3,8 @@ using System.Collections;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace Flash.Feather {
+namespace Flash.Feather
+{
 
 	class Utilities {
 

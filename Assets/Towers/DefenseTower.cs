@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DefenseTower : MonoBehaviour {
+[Serializable]
+public class DefenseTower : MonoBehaviour
+{
 
 	public float gunWarmTime;               //time (in seconds) before first shooting at enemies after targeting
 	public float fireRate, fireRateBoost;   //in shots per second
@@ -16,45 +18,49 @@ public class DefenseTower : MonoBehaviour {
 	public int[] alphaUpgradeCosts, betaUpgradeCosts;
 	public int sellValue;
 
-	public bool doubleShot = false;
+	public int priorityIndex;
 
-	private int _enemiesSpawned;
-	private bool hasEnemyTarget;
-	private bool isFiringAtEnemy;
+	protected bool doubleShot = false;
 
-	private enum TargetPriority { FIRST, LAST, STRONG, FAST };
+	protected bool hasEnemyTarget;
+	protected bool isFiringAtEnemy;
 
-	private SpriteRenderer spriteRend;
-	private GameObject towerRadial;
-	private List<Enemy> targetableEnemies;
-	private Enemy enemyTarget;
+	public enum TargetPriority { FIRST, LAST, STRONG, FAST };
+	public TargetPriority targetPriority;
+
+	protected SpriteRenderer spriteRend;
+	protected GameObject towerRadial;
 
 	[SerializeField]
-	private float gunLength, gunOffset;
+	protected List<Enemy> targetableEnemies;
 	[SerializeField]
-	private int maxAlphaUpgradeLevel, maxBetaUpgradeLevel;
-	[SerializeField]
-	private TargetPriority targetPriority;
-	[SerializeField]
-	private Projectile projectilePrefab;
-	[SerializeField]
-	private List<Sprite> upgradeSprites;
+	protected Enemy enemyTarget;
 
-	private void Awake() {
+	[SerializeField]
+	protected float gunLength, gunOffset;
+	[SerializeField]
+	protected int maxAlphaUpgradeLevel, maxBetaUpgradeLevel;
+	[SerializeField]
+	protected Projectile projectilePrefab;
+	[SerializeField]
+	protected List<Sprite> upgradeSprites;
+
+	protected void Awake() {
 		spriteRend = GetComponent<SpriteRenderer>();
 		towerRadial = transform.GetChild(0).gameObject;
 		tag = "owned tower";
 	}
 
-	private void Start() {
+	protected virtual void Start() {
 		alphaUpgradeCost = alphaUpgradeCosts[0];
 		betaUpgradeCost = betaUpgradeCosts[0];
 		spriteRend.sortingLayerName = "towers";
 		enemyTarget = null;
 		towerRadial.SetActive(false);
+		priorityIndex = 0;
 	}
 
-	void Update() {
+	protected void Update() {
 
 		TargetEnemy();
 		if (enemyTarget != null) LookAtEnemy();
@@ -64,36 +70,33 @@ public class DefenseTower : MonoBehaviour {
 
 	}
 
-	void OnMouseDown() {
+	protected void OnMouseDown() {
 		UserController.selectedTower = this.gameObject;
 	}
 
-	void ShowRadialIfSelected() {
+	protected void ShowRadialIfSelected() {
 		if (UserController.selectedTower == this.gameObject) {
 			towerRadial.SetActive(true);
 		} else { towerRadial.SetActive(false); }
 	}
 
-	void ClearEnemyTarget() {
+	protected void ClearEnemyTarget() {
 		enemyTarget = null;
 		hasEnemyTarget = false;
 	}
 
-	void LookAtEnemy() {
+	protected void LookAtEnemy() {
 		transform.up = enemyTarget.transform.position - transform.position;
 	}
 
 	void TargetEnemy() {
 
-		if (_enemiesSpawned != EnemySpawner.enemiesSpawned) {
-			EnemySpawner.ClearNullEnemies();
-			_enemiesSpawned = EnemySpawner.enemiesSpawned;
-		}
+		EnemySpawner.ClearNullEnemies();
 
 		targetableEnemies = new List<Enemy>();
 
 		foreach (Enemy enemy in EnemySpawner.allEnemies) {
-			if (enemy != null && Vector2.Distance(enemy.transform.position, this.transform.position) < towerRange) {
+			if (Vector2.Distance(enemy.transform.position, this.transform.position) < towerRange) {
 				targetableEnemies.Add(enemy);
 			}
 		}
@@ -118,7 +121,7 @@ public class DefenseTower : MonoBehaviour {
 		return e1.speed.CompareTo(e2.speed);
 	}
 
-	void SortEnemiesByPriority(TargetPriority targetPriority) {
+	protected void SortEnemiesByPriority(TargetPriority targetPriority) {
 		if (targetPriority == TargetPriority.FIRST) {
 			targetableEnemies.Sort(SortByTraversed);
 			targetableEnemies.Reverse();
@@ -136,14 +139,14 @@ public class DefenseTower : MonoBehaviour {
 		}
 	}
 
-	public void ChangeTargetPriorty(string priority) {
-		if		(priority == "FIRST")	{ targetPriority = TargetPriority.FIRST; } 
-		else if (priority == "LAST")	{ targetPriority = TargetPriority.LAST; } 
-		else if (priority == "STRONG")	{ targetPriority = TargetPriority.STRONG; } 
-		else if (priority == "FAST")	{ targetPriority = TargetPriority.FAST; }
+	public void ChangeTargetPriorty(int priority) {
+		if		(priority % 4 == 0)	{ targetPriority = DefenseTower.TargetPriority.FIRST; } 
+		else if (priority % 4 == 1) { targetPriority = DefenseTower.TargetPriority.LAST; } 
+		else if (priority % 4 == 2) { targetPriority = DefenseTower.TargetPriority.STRONG; } 
+		else if (priority % 4 == 3) { targetPriority = DefenseTower.TargetPriority.FAST; }
 	}
 
-	void StartShootAtEnemy() {
+	protected void StartShootAtEnemy() {
 		if (hasEnemyTarget && !isFiringAtEnemy) {
 			StartCoroutine(ShootAtEnemy(gunWarmTime));
 			isFiringAtEnemy = true;
@@ -164,8 +167,9 @@ public class DefenseTower : MonoBehaviour {
 		isFiringAtEnemy = false;
 	}
 
-	private void FireProjectile() {
-		Projectile proj = Instantiate(projectilePrefab, this.transform.position + this.transform.right * gunOffset + this.transform.up * gunLength, this.transform.rotation);
+	protected virtual void FireProjectile() {
+		Vector3 gunBarrellEnd = this.transform.position + this.transform.right * gunOffset + this.transform.up * gunLength;
+		Projectile proj = Instantiate(projectilePrefab, gunBarrellEnd, this.transform.rotation);
 		InitProjectile(proj);
 	}
 
@@ -185,7 +189,7 @@ public class DefenseTower : MonoBehaviour {
 				case 0:
 					fireRate += fireRateBoost;
 					projectileThrust *= 1.2f;
-					gunWarmTime = 0.75f;
+					gunWarmTime *= 0.8f;
 					MoneyManager.SpendInLevelCash(alphaUpgradeCost);
 					sellValue += (int)( 0.7 * alphaUpgradeCost );
 					alphaUpgradeCost = alphaUpgradeCosts[alphaUpgradeLevel+1];
@@ -193,7 +197,7 @@ public class DefenseTower : MonoBehaviour {
 				case 1:
 					fireRate += fireRateBoost;
 					maxBetaUpgradeLevel = 1;
-					gunWarmTime = 0.3f;
+					gunWarmTime *= 0.55f;
 					MoneyManager.SpendInLevelCash(alphaUpgradeCost);
 					sellValue += (int)( 0.7 * alphaUpgradeCost );
 					alphaUpgradeCost = alphaUpgradeCosts[alphaUpgradeLevel+1];
@@ -216,13 +220,15 @@ public class DefenseTower : MonoBehaviour {
 			switch (betaUpgradeLevel) {
 				case 0:
 					towerRange += towerRangeBoost;
+					projectileThrust *= 1.5f;
+					gunWarmTime *= 0.85f;
 					GetComponentInChildren<TowerRadial>().UpgradeSight();
 					MoneyManager.SpendInLevelCash(betaUpgradeCost);
 					sellValue += (int)( 0.7 * betaUpgradeCost );
 					betaUpgradeCost = betaUpgradeCosts[betaUpgradeLevel+1];
 					break;
 				case 1:
-					towerRangeBoost *= 1.5f;
+					towerRangeBoost *= 1.42f;
 					towerRange += towerRangeBoost;
 					gunLength *= 1.8f;
 					projectileThrust *= 1.5f;
@@ -295,17 +301,17 @@ public class DefenseTower : MonoBehaviour {
 	public virtual string AlphaUpgradeText(int alphaLevel) {
 		switch (alphaLevel) {
 			case 0:
-				return "Increases Fire Rate of this Mech";
+				return "Increases Fire Rate of this Mech - " + alphaUpgradeCost + " Ƀ";
 			case 1:
 				if (betaUpgradeLevel >= 2) {
 					return "UPGRADE UNAVAILABLE";
 				}
-				return "Further increases Fire Rate and reduces Aim Time";
+				return "Further increases Fire Rate and reduces Aim Time - " + alphaUpgradeCost + " Ƀ";
 			case 2:
 				if (betaUpgradeLevel >= 2) {
 					return "UPGRADE UNAVAILABLE";
 				}
-				return "DoubleShot: This Mech will fire two lazers with each shot!";
+				return "DoubleShot: This Mech will fire two lazers with each shot! - " + alphaUpgradeCost + " Ƀ";
 			case 3:
 				return "NO FURTHER UPGRADES AVAILABLE";
 			default: return "ERr0R %<\0>";
@@ -315,21 +321,27 @@ public class DefenseTower : MonoBehaviour {
 	public virtual string BetaUpgradeText(int betaLevel) {
 		switch (betaLevel) {
 			case 0:
-				return "Increases Range of this Mech";
+				return "Increases Range of this Mech - " + betaUpgradeCost + " Ƀ";
 			case 1:
 				if (alphaUpgradeLevel >= 2) {
 					return "UPGRADE UNAVAILABLE";
 				}
-				return "Greatly increases Range of this mech & lazers fly faster";
+				return "Greatly increases Range of this mech & lazers fly faster - " + betaUpgradeCost + " Ƀ";
 			case 2:
 				if (alphaUpgradeLevel >= 2) {
 					return "UPGRADE UNAVAILABLE";
 				}
-				return "LazerBlazer: Mech's lazers can hit 2 enemies and deal double damage!";
+				return "Lazer Blazer: Mech's lazers can hit 2 enemies and deal double damage! - " + betaUpgradeCost + " Ƀ";
 			case 3:
 				return "NO FURTHER UPGRADES AVAILABLE";
 			default: return "ERr0R %<\0>";
 		}
+	}
+
+	public string TargetPriorityText(TargetPriority priority) {
+		string text = priority.ToString();
+		return "TARGET: \n" + text;
+
 	}
 
 }

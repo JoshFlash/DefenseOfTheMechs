@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour {
+public class EnemyController : MonoBehaviour
+{
 
 	public float maxSpeed = 2f;
+	public int pointNumber;
 
-	private int pointNumber;
 	private float distanceToWaypoint;
 	private float pointRadius = 0.02f;
 	[SerializeField] private Waypoint nextWaypoint;
-	
+
+	private void Awake() {
+		pointNumber = GetComponent<Enemy>().startingWaypointNumber;
+	} 
 
 	void Start () {
-		pointNumber = 0;
 		nextWaypoint = WaypointManager.levelWaypoints[pointNumber];
 	}
 	
@@ -41,7 +44,8 @@ public class EnemyController : MonoBehaviour {
 		transform.position = Vector2.MoveTowards(transform.position, nextWaypoint.transform.position, step);
 	}
 	void LookAtWaypoint() {
-		transform.up = Vector3.Slerp(transform.up,(nextWaypoint.transform.position - transform.position),Time.fixedDeltaTime*4f);
-		transform.rotation *= Quaternion.Euler(0,0,1);
+		transform.rotation *= Quaternion.Euler(0, 0, 1);
+		transform.up = Vector3.Slerp(transform.up,(nextWaypoint.transform.position - transform.position),Time.fixedDeltaTime*4.4f);
+		transform.rotation *= Quaternion.Euler(0, 0, 1);
 	}
 }

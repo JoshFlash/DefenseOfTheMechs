@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoundManager : MonoBehaviour {
+public class RoundManager : MonoBehaviour
+{
 
 	public static int round;
 	public static bool isRoundOver = true;
@@ -13,6 +14,9 @@ public class RoundManager : MonoBehaviour {
 
 	private void Start() {
 		round = 1;
+	}
+
+	private void Update() {
 	}
 
 	public void ResetRounds() {
@@ -71,7 +75,7 @@ public class RoundManager : MonoBehaviour {
 	}
 
 	IEnumerator Round1() {
-		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[0], 8, 1.2f));
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[2], 8, 4.2f));
 		yield return new WaitForSeconds(3);
 		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[0], 4, 0.8f));
 		yield return new WaitForSeconds(2);
@@ -81,7 +85,7 @@ public class RoundManager : MonoBehaviour {
 	}
 
 	IEnumerator Round2() {
-		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[0], 10, 1.2f));
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[0], 10, 1.0f));
 		yield return new WaitForSeconds(3);
 		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[1], 4, 0.8f));
 		yield return new WaitForSeconds(2);
@@ -93,7 +97,7 @@ public class RoundManager : MonoBehaviour {
 	}
 
 	IEnumerator Round3() {
-		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[0], 10, 1.2f));
+		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[0], 8, 0.8f));
 		yield return new WaitForSeconds(3);
 		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[1], 8, 0.8f));
 		yield return new WaitForSeconds(2);

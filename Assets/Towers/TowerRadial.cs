@@ -18,4 +18,7 @@ public class TowerRadial : MonoBehaviour {
 		transform.localScale = originalScale * 2 * sightRadius;
 	}
 
+	public void SetToOriginalScale() {
+		transform.localScale = originalScale;
+	}
 }

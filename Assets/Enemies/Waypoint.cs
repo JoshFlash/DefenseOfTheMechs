@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using Flash.Feather;
 using UnityEngine;
 
-public class Waypoint : MonoBehaviour {
+public class Waypoint : MonoBehaviour
+{
 
 	public int pointNumber;
 

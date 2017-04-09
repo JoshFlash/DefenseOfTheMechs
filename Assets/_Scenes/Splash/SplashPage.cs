@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SplashPage : MonoBehaviour {
+public class SplashPage : MonoBehaviour
+{
 
 	public float splashTime;
 

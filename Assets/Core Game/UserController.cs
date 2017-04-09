@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class UserController : MonoBehaviour {
+public class UserController : MonoBehaviour
+{
 
 	public bool dev_GodSpeed;
 	public static GameObject selectedTower;
@@ -36,6 +37,7 @@ public class UserController : MonoBehaviour {
 			upgradeMenu.SetActive(false);
 			contextMenu = towerMenu;
 			contextMenu.SetActive(true);
+			PriorityText.SetPriorityText();
 		} else {
 			contextMenu.SetActive(true);
 		}
@@ -80,7 +82,8 @@ public class UserController : MonoBehaviour {
 
 	public void PressSellButton() {
 		MoneyManager.inLevelCash += selectedTower.GetComponent<DefenseTower>().sellValue;
-		selectedTower.SetActive(false);
+		Destroy(selectedTower);
+		contextMenu.SetActive(false);
 	}
 
 	bool ClickedOnGround() {
@@ -116,6 +119,21 @@ public class UserController : MonoBehaviour {
 		alphaButtonPressed = false;
 		betaButtonPressed = false;
 		HandleContextMenu();
+	}
+
+	public void PressPriorityUpButton() {
+		DefenseTower _selectedTower = selectedTower.GetComponent<DefenseTower>();
+		_selectedTower.priorityIndex++;
+		_selectedTower.ChangeTargetPriorty(_selectedTower.priorityIndex);
+		PriorityText.SetPriorityText();
+	}
+
+	public void PressPiorityDownButton() {
+		DefenseTower _selectedTower = selectedTower.GetComponent<DefenseTower>();
+		if (_selectedTower.priorityIndex <= 0) _selectedTower.priorityIndex += 4;
+		_selectedTower.priorityIndex--;
+		_selectedTower.ChangeTargetPriorty(_selectedTower.priorityIndex);
+		PriorityText.SetPriorityText();
 	}
 
 	public void ToggleDoubleTime() {

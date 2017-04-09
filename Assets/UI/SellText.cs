@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 
-public class SellText : MonoBehaviour {
+public class SellText : MonoBehaviour
+{
 
 	private Text sellText;
 
@@ -14,4 +15,5 @@ public class SellText : MonoBehaviour {
 	void Update() {
 		if (UserController.selectedTower)	sellText.text = "  Sell Value: \n    " + UserController.selectedTower.GetComponent<DefenseTower>().sellValue;
 	}
+
 }

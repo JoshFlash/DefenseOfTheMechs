@@ -2,19 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour {
+public class EnemySpawner : MonoBehaviour
+{
+
+	public List<Enemy> serializedAllEnemies;
 
 	public static List<Enemy> allEnemies;
 	public static int enemiesSpawned;
-
 	public List<Enemy> enemyTypes;
 
-	void Awake() {
+	private void Awake() {
 		allEnemies = new List<Enemy>();
-	}
-
-	void Start() {
-
 	}
 
 	public IEnumerator SpawnEnemy(Enemy enemyType, int numberToSpawn, float spawnDelay) {
@@ -27,7 +25,9 @@ public class EnemySpawner : MonoBehaviour {
 	}
 
 	public static void ClearNullEnemies() {
-		allEnemies.RemoveAll(item => item == null);
+		if (allEnemies.Count > 0) {
+			allEnemies.RemoveAll(item => item == null);
+		}
 	}
 
 }

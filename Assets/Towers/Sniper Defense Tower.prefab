@@ -69,11 +69,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4461529442503040}
-  - component: {fileID: 114728621331704200}
+  - component: {fileID: 114337957187240670}
   - component: {fileID: 212674329203429310}
   - component: {fileID: 58205039779530978}
   m_Layer: 0
-  m_Name: Base Defense Tower
+  m_Name: Sniper Defense Tower
   m_TagString: owned tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,8 +104,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1643719311873198}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.047, y: -0.196, z: 0.99}
-  m_LocalScale: {x: 0.027383348, y: 1, z: 0.08542019}
+  m_LocalPosition: {x: 0.047, y: -0.05, z: 0.99}
+  m_LocalScale: {x: 0.027383361, y: 1, z: 0.09461791}
   m_Children: []
   m_Father: {fileID: 4454876045135908}
   m_RootOrder: 0
@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1608937617697122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.42, y: 1.75, z: 0}
+  m_LocalPosition: {x: -6.229, y: 0.808, z: 0}
   m_LocalScale: {x: 0.77, y: 0.77, z: 1}
   m_Children:
   - {fileID: 4885452087895104}
@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1293139097163964}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -0.009, y: -0.273, z: 0.99}
+  m_LocalPosition: {x: -0.035, y: -0.188, z: 0.99}
   m_LocalScale: {x: 0.06708086, y: 1, z: 0.054899212}
   m_Children: []
   m_Father: {fileID: 4454876045135908}
@@ -160,7 +160,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235934578598428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.04, y: -0.135, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4461529442503040}
@@ -287,6 +287,44 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114337957187240670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1608937617697122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3126e9547c1fd428a60a28f1759f23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunWarmTime: 1.33
+  fireRate: 0.33
+  fireRateBoost: 0.2
+  towerRange: 50
+  towerRangeBoost: 30
+  projectileThrust: 0
+  projectileDamage: 1.1
+  projectileMultiHit: 1
+  alphaUpgradeLevel: 0
+  betaUpgradeLevel: 0
+  alphaUpgradeCost: 0
+  betaUpgradeCost: 0
+  alphaUpgradeCosts: 000000000000000000000000
+  betaUpgradeCosts: 000000000000000000000000
+  sellValue: 140
+  priorityIndex: 0
+  targetPriority: 0
+  targetableEnemies: []
+  enemyTarget: {fileID: 0}
+  gunLength: 0.7
+  gunOffset: 0.06
+  maxAlphaUpgradeLevel: 3
+  maxBetaUpgradeLevel: 3
+  projectilePrefab: {fileID: 114558314487274522, guid: 3703abb314aeef340b6aa2154dd4888f,
+    type: 2}
+  upgradeSprites: []
+  gunSparks: {fileID: 1075917602985344, guid: 00ea5f2590854d048a11bec51c562184, type: 2}
 --- !u!114 &114720451386450580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,55 +336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c15d2107d8a7bc488c2a0db9248ec03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114728621331704200
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1608937617697122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ad30891b553a054ebcd6712d204a5f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunWarmTime: 0.86
-  fireRate: 0.77
-  fireRateBoost: 0.46
-  towerRange: 1.8
-  towerRangeBoost: 0.64
-  projectileThrust: 8.2
-  projectileDamage: 1.143
-  projectileMultiHit: 1
-  alphaUpgradeLevel: 0
-  betaUpgradeLevel: 0
-  alphaUpgradeCost: 0
-  betaUpgradeCost: 0
-  alphaUpgradeCosts: 5a00000096000000dc000000
-  betaUpgradeCosts: 5000000064000000b4000000
-  sellValue: 100
-  priorityIndex: 0
-  targetPriority: 0
-  targetableEnemies: []
-  enemyTarget: {fileID: 0}
-  gunLength: 0.5
-  gunOffset: 0.07
-  maxAlphaUpgradeLevel: 3
-  maxBetaUpgradeLevel: 3
-  projectilePrefab: {fileID: 114558314487274522, guid: 3703abb314aeef340b6aa2154dd4888f,
-    type: 2}
-  upgradeSprites:
-  - {fileID: 21300000, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300002, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300004, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300006, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300008, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300010, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300012, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300014, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300016, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300018, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300020, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
-  - {fileID: 21300022, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
 --- !u!212 &212306587295672588
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -380,7 +369,7 @@ SpriteRenderer:
   m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f3ea428d975245b4c823a67843e8d21c, type: 3}
-  m_Color: {r: 0.541, g: 0.553, b: 0.578, a: 0.641}
+  m_Color: {r: 0.541, g: 0.553, b: 0.578, a: 0.566}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -419,7 +408,7 @@ SpriteRenderer:
   m_SortingLayerID: -1329930617
   m_SortingLayer: -1
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 5f7ff46ee947fac47ae20a82ea5ee878, type: 3}
+  m_Sprite: {fileID: 21300004, guid: 0e83f3132bd05bf4da3b72269e25105e, type: 3}
   m_Color: {r: 0.84705883, g: 0.84705883, b: 0.84705883, a: 1}
   m_FlipX: 0
   m_FlipY: 0

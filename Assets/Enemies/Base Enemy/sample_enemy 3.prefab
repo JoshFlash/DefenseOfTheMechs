@@ -22,9 +22,10 @@ GameObject:
   - component: {fileID: 212295947237057264}
   - component: {fileID: 114800006193200608}
   - component: {fileID: 61135177051443274}
+  - component: {fileID: 50379273139609024}
   m_Layer: 8
-  m_Name: sample_enemy 2
-  m_TagString: Untagged
+  m_Name: sample_enemy 3
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,13 +36,33 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1379380016487574}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.7474675, y: 0.017647289, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.638674, y: 2.7427876, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50379273139609024
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1379380016487574}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61135177051443274
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -53,9 +74,20 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.7866667, y: 0.92666674}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.7}
+  m_EdgeRadius: 0
 --- !u!114 &114800006193200608
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -68,9 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceTraversed: 0
-  speed: 2
-  health: 2.08
-  value: 2
+  speed: 3.1415925
+  health: 2.99
+  value: 3
+  startingWaypointNumber: 0
+  enemyDeathSparks: {fileID: 1075917602985344, guid: 00ea5f2590854d048a11bec51c562184,
+    type: 2}
 --- !u!212 &212295947237057264
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -101,8 +136,13 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 0e83f3132bd05bf4da3b72269e25105e, type: 3}
-  m_Color: {r: 0.41911763, g: 0.8798173, b: 1, a: 1}
+  m_Color: {r: 0.70354986, g: 0.41911763, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0

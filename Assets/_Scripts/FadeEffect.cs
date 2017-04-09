@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class FadeEffect : MonoBehaviour {
+public class FadeEffect : MonoBehaviour
+{
 
 	public bool fadeOut;
 	public float fadeTime, fadeDelay;

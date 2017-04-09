@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 50273088095636358}
   - component: {fileID: 114789663771504234}
   m_Layer: 0
-  m_Name: lazer_long
-  m_TagString: lazer
+  m_Name: zz_lazer_long (to be replaced)
+  m_TagString: projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +74,7 @@ CapsuleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0.002855301, y: 0.09140015}
   m_Size: {x: 0.06985679, y: 0.29204735}
   m_Direction: 0
@@ -123,8 +124,13 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300004, guid: ccce3e08891443a4e82aec4d1a85e57b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0

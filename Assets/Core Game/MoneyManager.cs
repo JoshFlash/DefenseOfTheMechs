@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyManager : MonoBehaviour {
+public class MoneyManager : MonoBehaviour
+{
 
 	public static int inLevelCash;  // this is the $ used to buy towers and upgrades within a level -  earned in-level, spent in-level - it resets upon starting a new level
 	public int startCash;

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewTower : MonoBehaviour {
+public class NewTower : MonoBehaviour
+{
 
 	private float cameraDistance;
 	private bool towerIsPlaceable;
