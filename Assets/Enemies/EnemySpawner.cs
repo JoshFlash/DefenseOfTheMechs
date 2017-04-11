@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
 
-	public List<Enemy> serializedAllEnemies;
+	//public List<Enemy> serializedAllEnemies;
 
 	public static List<Enemy> allEnemies;
 	public static int enemiesSpawned;

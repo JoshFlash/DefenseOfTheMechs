@@ -13,6 +13,6 @@ public class GoldCounter : MonoBehaviour
 	}
 
 	void Update() {
-		goldText.text = "  ɃotCoin: \n    " + MoneyManager.inLevelCash.ToString() + "\n Round:  " + (RoundManager.round-1);
+		goldText.text = "  ɃotCoin: \n    " + MoneyManager.inLevelCash.ToString() + "\n Round:  " + (RoundManager.currentRound-1);
 	}
 }

@@ -2,10 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 
+/// NOTES:
+/// 
+/// staggered waves will have shorter spawn intervals between distinct enemies
+/// i.e. two staggered enemy types will have half of spawnInterval time 
+/// between each distinct type but full spawnInterval between subsequent 
+/// enemies of the same type
+/// 
+/// </summary>
+
 public class RoundManager : MonoBehaviour
 {
 
-	public static int round;
+	public List<Round> allRounds;
+
+	public static int currentRound;
 	public static bool isRoundOver = true;
 
 	[SerializeField] private EnemySpawner mainEnemySpawner;
@@ -13,66 +26,50 @@ public class RoundManager : MonoBehaviour
 	[SerializeField] private List<EnemySpawner> allEnemySpawners;
 
 	private void Start() {
-		round = 1;
-	}
-
-	private void Update() {
+		currentRound = 1;
 	}
 
 	public void ResetRounds() {
-		round = 1;
+		currentRound = 1;
 	}
 
 	public void StartRoundButton() {
-		StartRound(round);
+		StartRound();
 	}
 
-	public void StartRound(int _round) {
+	public void StartRound() {
 		if (isRoundOver) {
 			isRoundOver = false;
-			switch (_round) {
-
-				case 1:
-					StartCoroutine(Round1());
-					round++;
-					break;
-
-				case 2:
-					StartCoroutine(Round2());
-					round++;
-					break;
-
-				case 3:
-					StartCoroutine(Round3());
-					round++;
-					break;
-
-				case 4:
-					StartCoroutine(Round4());
-					round++;
-					break;
-
-				case 5:
-					StartCoroutine(Round5());
-					round++;
-					break;
-
-				case 6:
-					StartCoroutine(Round6());
-					round++;
-					break;
-
-
-
-
-				default:
-					StartCoroutine(DefaultRound());
-					round++;
-					break;					
-			}
-
+			StartCoroutine(ExecuteRound(allRounds[currentRound-1]));
+			currentRound++;
 		}
 	}
+
+	IEnumerator ExecuteRound(Round round) {
+		for (int i = 0; i < round.totalEnemyWaves; i++) {
+			Round.Wave wave = round.enemyWaves[i];
+			wave.staggerInterval = wave.spawnInterval / wave.enemyTypes.Count; 
+			yield return StartCoroutine(SpawnWave(wave));
+		}
+		yield return isRoundOver = true;
+		MoneyManager.CollectInLevelCash(round.roundValue);
+	}
+
+	IEnumerator SpawnWave(Round.Wave wave) {
+		for (int i = 1; i <= wave.enemyTypes.Count; i++) {
+			if (i < wave.enemyTypes.Count) {
+				StartCoroutine(mainEnemySpawner.SpawnEnemy(wave.enemyTypes[i-1], wave.enemiesInWave, wave.spawnInterval));
+				yield return new WaitForSeconds(wave.staggerInterval);
+			} else {
+				yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(wave.enemyTypes[i-1], wave.enemiesInWave, wave.spawnInterval));
+			}
+		}
+		yield return new WaitForSeconds(wave.delayAfterWave);
+	}
+
+
+	// Below are the hard-coded rounds which are to be transfered to gameobjects via the editor
+
 
 	IEnumerator Round1() {
 		yield return StartCoroutine(mainEnemySpawner.SpawnEnemy(mainEnemySpawner.enemyTypes[2], 8, 4.2f));

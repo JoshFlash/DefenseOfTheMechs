@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunWarmTime: 1.33
   fireRate: 0.33
-  fireRateBoost: 0.2
+  fireRateBoost: 0.1
   towerRange: 50
   towerRangeBoost: 30
   projectileThrust: 0

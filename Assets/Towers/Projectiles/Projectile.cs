@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
 		if (collider.tag == "enemy" && this.tag == "projectile") {
 			multiHit--;
 			if (multiHit <= 0) {
-				Destroy(gameObject, 0.03f);
+				Destroy(gameObject, 0.01f);
 			}
 		}
 	}
