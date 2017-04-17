@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1379380016487574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7474675, y: 0.017647289, z: 0}
+  m_LocalPosition: {x: 4.2159505, y: 2.735422, z: 0}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,18 +75,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.034605503, y: -0.2808193}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.7866667, y: 0.92666674}
+    oldSize: {x: 1.1800001, y: 1.3900001}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.7}
+  m_Size: {x: 0.5692109, y: 0.43019176}
   m_EdgeRadius: 0
 --- !u!114 &114800006193200608
 MonoBehaviour:
@@ -106,6 +106,8 @@ MonoBehaviour:
   startingWaypointNumber: 0
   enemyDeathSparks: {fileID: 1075917602985344, guid: 00ea5f2590854d048a11bec51c562184,
     type: 2}
+  isPoisoned: 0
+  isSlowed: 0
 --- !u!212 &212295947237057264
 SpriteRenderer:
   m_ObjectHideFlags: 1

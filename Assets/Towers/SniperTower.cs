@@ -54,6 +54,7 @@ public class SniperTower : DefenseTower
 					break;
 				case 1:
 					critChance = 0.33f;
+					fireRate *= 1.1f;
 					maxBetaUpgradeLevel = 1;
 					MoneyManager.SpendInLevelCash(alphaUpgradeCost);
 					sellValue += (int)( 0.7 * alphaUpgradeCost );
@@ -101,50 +102,6 @@ public class SniperTower : DefenseTower
 		}
 	}
 
-	protected override void SetTowerSprite() {
-		if (alphaUpgradeLevel == 0) {
-			spriteRend.sprite = upgradeSprites[betaUpgradeLevel];
-		}
-		if (alphaUpgradeLevel == 1) {
-			spriteRend.sprite = upgradeSprites[betaUpgradeLevel + 4];
-		}
-		if (alphaUpgradeLevel == 2) {
-			spriteRend.sprite = upgradeSprites[8 + betaUpgradeLevel];
-		}
-		if (alphaUpgradeLevel == 3) {
-			spriteRend.sprite = upgradeSprites[10 + betaUpgradeLevel];
-		}
-
-
-		/// <summary>
-		/// Below is the sprite matrix for the List<Sprite> 'upgradeSprites' of the sniper tower class
-		/// (numbers in boxes correnspond to List index for appropriate sprite given alpa-beta levels)
-		/// 
-		///		| beta	|		|		|		|	
-		///	alfa|	0	|	1	|	2	|	3	|	
-		/// ---------------------------------------
-		///		|		|		|		|		|	
-		///	0	|	0	|	1	|	2	|	3	|	
-		///		|		|		|		|		|	
-		///	---------------------------------------
-		///		|		|		|		|		|	
-		///	1	|	4	|	5	|	6	|	7	|	
-		///		|		|		|		|		|	
-		///	---------------------------------------
-		///		|		|		|		|		|	
-		///	2	|	8	|	9	|		|		|	
-		///		|		|		|		|		|	
-		/// ---------------------------------------
-		/// 	|		|		|		|		|	
-		///	3	|	10	|	11	|		|		|	
-		///		|		|		|		|		|	
-		/// ---------------------------------------
-		/// 
-		/// 
-		/// </summary> 
-
-	}
-
 	public override string AlphaUpgradeText(int alphaLevel) {
 		switch (alphaLevel) {
 			case 0:
@@ -184,4 +141,5 @@ public class SniperTower : DefenseTower
 			default: return "ERr0R %<\0>";
 		}
 	}
+
 }

@@ -40,7 +40,7 @@ public class EnemyController : MonoBehaviour
 	}
 
 	void MoveToNextWayPoint() {
-		float step = maxSpeed * Time.deltaTime;
+		float step = maxSpeed * 1.25f * Time.deltaTime;
 		transform.position = Vector2.MoveTowards(transform.position, nextWaypoint.transform.position, step);
 	}
 	void LookAtWaypoint() {

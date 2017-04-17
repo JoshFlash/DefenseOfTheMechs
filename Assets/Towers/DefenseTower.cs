@@ -22,6 +22,7 @@ public class DefenseTower : MonoBehaviour
 
 	protected bool doubleShot = false;
 
+	protected bool radialActive;
 	protected bool hasEnemyTarget;
 	protected bool isFiringAtEnemy;
 
@@ -30,6 +31,7 @@ public class DefenseTower : MonoBehaviour
 
 	protected SpriteRenderer spriteRend;
 	protected GameObject towerRadial;
+	protected bool targetIsInRange;
 
 	[SerializeField]
 	protected List<Enemy> targetableEnemies;
@@ -52,22 +54,33 @@ public class DefenseTower : MonoBehaviour
 	}
 
 	protected virtual void Start() {
+		radialActive = false;
 		alphaUpgradeCost = alphaUpgradeCosts[0];
 		betaUpgradeCost = betaUpgradeCosts[0];
 		spriteRend.sortingLayerName = "towers";
 		enemyTarget = null;
-		towerRadial.SetActive(false);
 		priorityIndex = 0;
 	}
 
 	protected void Update() {
 
-		TargetEnemy();
-		if (enemyTarget != null) LookAtEnemy();
-		if (targetableEnemies.Count == 0) ClearEnemyTarget();
-		StartShootAtEnemy();
+		if (enemyTarget) targetIsInRange = (Vector2.Distance(enemyTarget.transform.position, this.transform.position) < towerRange) ;
+		if (TargetShouldBeCleared()) ClearEnemyTarget();
+
+		if (!hasEnemyTarget) TargetEnemy();
+		if (enemyTarget) LookAtEnemy();
+
+		if (hasEnemyTarget) StartShootAtEnemy();
 		ShowRadialIfSelected();
 
+	}
+
+	protected bool TargetShouldBeCleared() {	
+		if		(targetableEnemies.Count == 0)			return true;
+		else if (enemyTarget == null)					return true;
+		else if (hasEnemyTarget && !targetIsInRange)	return true;
+		else if (enemyTarget.isPoisoned)				return true;
+		else return false;
 	}
 
 	protected void OnMouseDown() {
@@ -75,9 +88,13 @@ public class DefenseTower : MonoBehaviour
 	}
 
 	protected void ShowRadialIfSelected() {
-		if (UserController.selectedTower == this.gameObject) {
+		if (UserController.selectedTower == this.gameObject && !radialActive) {
 			towerRadial.SetActive(true);
-		} else { towerRadial.SetActive(false); }
+			radialActive = true;
+		} else if (UserController.selectedTower != this.gameObject && radialActive) {
+			towerRadial.SetActive(false);
+			radialActive = false;
+		}
 	}
 
 	protected void ClearEnemyTarget() {
@@ -86,10 +103,10 @@ public class DefenseTower : MonoBehaviour
 	}
 
 	protected void LookAtEnemy() {
-		transform.up = enemyTarget.transform.position - transform.position;
+		transform.up = Vector3.Slerp(transform.up,enemyTarget.transform.position - transform.position,0.8f);
 	}
 
-	void TargetEnemy() {
+	protected virtual void TargetEnemy() {
 
 		EnemySpawner.ClearNullEnemies();
 
@@ -147,7 +164,7 @@ public class DefenseTower : MonoBehaviour
 	}
 
 	protected void StartShootAtEnemy() {
-		if (hasEnemyTarget && !isFiringAtEnemy) {
+		if (!isFiringAtEnemy) {
 			StartCoroutine(ShootAtEnemy(gunWarmTime));
 			isFiringAtEnemy = true;
 		}
@@ -173,7 +190,7 @@ public class DefenseTower : MonoBehaviour
 		InitProjectile(proj);
 	}
 
-	public void InitProjectile(Projectile proj) {
+	public  virtual void InitProjectile(Projectile proj) {
 		Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
 		rb.AddForce(transform.up * projectileThrust);
 		proj.damage = this.projectileDamage;

@@ -9,6 +9,13 @@ public class Projectile : MonoBehaviour
 	public float extraRange;
 	public int multiHit;
 
+	public bool isPoisonous;
+	public bool isSlowing;
+	public float poisonDamage;
+	public float poisonInterval;
+	public float poisonTicks;
+	public float slowAmount; // between 0 and 1
+
 	private Rigidbody2D rigidBody;
 	private float distanceTraversed;
 

@@ -1,12 +1,13 @@
 fileFormatVersion: 2
 guid: 0e83f3132bd05bf4da3b72269e25105e
-timeCreated: 1491202732
+timeCreated: 1492165758
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: SampleEnemy_0
     21300002: CarrierEnemy_0
     21300004: SniperTower_0
+    21300006: AssassinTower_0
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -43,7 +44,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 150
+  spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -124,6 +125,19 @@ TextureImporter:
         height: 259
       alignment: 9
       pivot: {x: 0.5257172, y: 0.3750509}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTower_0
+      rect:
+        serializedVersion: 2
+        x: 3330
+        y: 2607
+        width: 145
+        height: 256
+      alignment: 9
+      pivot: {x: 0.55303407, y: 0.38629887}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

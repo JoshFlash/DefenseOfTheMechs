@@ -1,0 +1,260 @@
+fileFormatVersion: 2
+guid: 2b1e84785d7cf8b4ca03e9f495905842
+timeCreated: 1492260109
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: AssassinTowerMatrix_0
+    21300002: AssassinTowerMatrix_1
+    21300004: AssassinTowerMatrix_2
+    21300006: AssassinTowerMatrix_3
+    21300008: AssassinTowerMatrix_4
+    21300010: AssassinTowerMatrix_5
+    21300012: AssassinTowerMatrix_6
+    21300014: AssassinTowerMatrix_7
+    21300016: AssassinTowerMatrix_8
+    21300018: AssassinTowerMatrix_9
+    21300020: AssassinTowerMatrix_10
+    21300022: AssassinTowerMatrix_11
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 0
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_0
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 911
+        width: 158
+        height: 185
+      alignment: 9
+      pivot: {x: 0.5782935, y: 0.41489688}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_1
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 902
+        width: 170
+        height: 197
+      alignment: 9
+      pivot: {x: 0.6092414, y: 0.40573072}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_2
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 898
+        width: 172
+        height: 230
+      alignment: 9
+      pivot: {x: 0.5905304, y: 0.34767297}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_3
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 898
+        width: 172
+        height: 230
+      alignment: 9
+      pivot: {x: 0.5905304, y: 0.34767297}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_4
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 665
+        width: 153
+        height: 197
+      alignment: 9
+      pivot: {x: 0.5787813, y: 0.41259176}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_5
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 665
+        width: 171
+        height: 197
+      alignment: 9
+      pivot: {x: 0.5906281, y: 0.3863696}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_6
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 657
+        width: 172
+        height: 230
+      alignment: 9
+      pivot: {x: 0.5800898, y: 0.3577528}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_7
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 648
+        width: 172
+        height: 230
+      alignment: 9
+      pivot: {x: 0.5800898, y: 0.35026616}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_8
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 421
+        width: 153
+        height: 197
+      alignment: 9
+      pivot: {x: 0.59003586, y: 0.41259193}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_9
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 418
+        width: 171
+        height: 197
+      alignment: 9
+      pivot: {x: 0.600698, y: 0.3951103}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_10
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 140
+        width: 162
+        height: 226
+      alignment: 9
+      pivot: {x: 0.5744046, y: 0.4085696}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: AssassinTowerMatrix_11
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 141
+        width: 172
+        height: 226
+      alignment: 9
+      pivot: {x: 0.58009, y: 0.3857121}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
