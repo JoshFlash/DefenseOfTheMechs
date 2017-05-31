@@ -30,7 +30,7 @@ public class SniperTower : DefenseTower
 		if (critChance > 0) {
 			float critRoll = Random.Range(0f, .99f);
 			if (critRoll < critChance) {
-				enemyTarget.TakeDamage(this.projectileDamage * 1.03f);
+				enemyTarget.TakeDamage(this.projectileDamage * 1.7f);
 			}
 		}
 	}
@@ -77,7 +77,7 @@ public class SniperTower : DefenseTower
 		if (betaUpgradeLevel < maxBetaUpgradeLevel) {
 			switch (betaUpgradeLevel) {
 				case 0:
-					projectileDamage = 1.6f;
+					projectileDamage += 1.6f;
 					MoneyManager.SpendInLevelCash(betaUpgradeCost);
 					sellValue += (int)( 0.7 * betaUpgradeCost );
 					betaUpgradeCost = betaUpgradeCosts[betaUpgradeLevel + 1];
@@ -91,7 +91,7 @@ public class SniperTower : DefenseTower
 					break;
 				case 2:
 					stunTime = 2.2f;
-					projectileDamage = 2.2f;
+					projectileDamage = 3.2f;
 					MoneyManager.SpendInLevelCash(betaUpgradeCost);
 					sellValue += (int)( 0.7 * betaUpgradeCost );
 					break;

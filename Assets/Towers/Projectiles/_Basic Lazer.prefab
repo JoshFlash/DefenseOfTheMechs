@@ -102,12 +102,14 @@ MonoBehaviour:
   damage: 0
   speed: 0
   range: 0
-  extraRange: 0
+  extraRange: 0.4
   multiHit: 0
   isPoisonous: 0
+  isSlowing: 0
   poisonDamage: 0
   poisonInterval: 0
   poisonTicks: 0
+  slowAmount: 0
 --- !u!212 &212081179253825488
 SpriteRenderer:
   m_ObjectHideFlags: 1

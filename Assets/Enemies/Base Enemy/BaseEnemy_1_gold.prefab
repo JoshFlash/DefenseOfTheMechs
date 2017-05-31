@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212295947237057264}
   - component: {fileID: 114800006193200608}
   - component: {fileID: 61135177051443274}
-  - component: {fileID: 50420451160812838}
+  - component: {fileID: 50300245793297090}
   m_Layer: 8
-  m_Name: sample_enemy 1
+  m_Name: BaseEnemy_1_gold
   m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,13 +37,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1379380016487574}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.2159505, y: 2.735422, z: 0}
+  m_LocalPosition: {x: -4.7474675, y: 0.017647289, z: 0}
   m_LocalScale: {x: 0.99999994, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &50420451160812838
+--- !u!50 &50300245793297090
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 1
@@ -57,7 +57,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -75,18 +75,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.034605503, y: -0.2808193}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1800001, y: 1.3900001}
+    oldSize: {x: 0.86, y: 1.15}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5692109, y: 0.43019176}
+  m_Size: {x: 0.5, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &114800006193200608
 MonoBehaviour:
@@ -100,11 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceTraversed: 0
-  speed: 2
-  health: 1
-  value: 1
+  speed: 1.98
+  health: 6
+  value: 3
   startingWaypointNumber: 0
   enemyDeathSparks: {fileID: 1075917602985344, guid: 00ea5f2590854d048a11bec51c562184,
+    type: 2}
+  poisonEffect: {fileID: 1553723610606956, guid: 52caa62ad8d2f2c43acb3c7e6fa8a59f,
     type: 2}
   isPoisoned: 0
   isSlowed: 0
@@ -140,7 +142,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 0e83f3132bd05bf4da3b72269e25105e, type: 3}
+  m_Sprite: {fileID: 21300006, guid: 00e0f58c4e1dd134e9158d93ca7b2700, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

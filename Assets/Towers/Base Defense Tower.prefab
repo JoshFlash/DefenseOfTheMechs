@@ -309,11 +309,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ad30891b553a054ebcd6712d204a5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunWarmTime: 0.78
-  fireRate: 0.77
-  fireRateBoost: 0.46
-  towerRange: 1.8
-  towerRangeBoost: 0.64
+  gunWarmTime: 0.64
+  fireRate: 0.82
+  fireRateBoost: 0.64
+  towerRange: 2
+  towerRangeBoost: 0.75
   projectileThrust: 8.2
   projectileDamage: 1.143
   projectileMultiHit: 1
@@ -324,7 +324,6 @@ MonoBehaviour:
   alphaUpgradeCosts: 5a00000096000000dc000000
   betaUpgradeCosts: 5000000064000000b4000000
   sellValue: 100
-  targetPoisonedEnemy: 1
   priorityIndex: 0
   targetPriority: 0
   targetableEnemies: []

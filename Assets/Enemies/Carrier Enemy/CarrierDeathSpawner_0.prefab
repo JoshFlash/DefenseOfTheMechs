@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114349666882139480}
   - component: {fileID: 212963567564735058}
   m_Layer: 0
-  m_Name: CarrierDeathSpawner_Enemy1
+  m_Name: CarrierDeathSpawner_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,10 +54,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypeHeld: {fileID: 114800006193200608, guid: 8e2856368d406294d8e2102edea6bdea,
     type: 2}
-  totalEnemiesHeld: 4
+  totalEnemiesHeld: 8
   spawnDelay: 0.7
   waypointNumber: 0
-  spawnerLifetime: 4
+  distanceTraversedByCarrier: 0
 --- !u!212 &212963567564735058
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -91,7 +91,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300008, guid: ccce3e08891443a4e82aec4d1a85e57b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.777282, g: 1, b: 0.7352941, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

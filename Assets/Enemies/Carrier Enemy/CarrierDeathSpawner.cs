@@ -9,9 +9,14 @@ public class CarrierDeathSpawner : MonoBehaviour
 	public int totalEnemiesHeld;
 	public float spawnDelay;
 	public int waypointNumber;
-	public float spawnerLifetime;
+
+	private float spawnerLifetime;
 
 	public float distanceTraversedByCarrier;
+
+	private void Awake() {
+		spawnerLifetime = ( totalEnemiesHeld + 3 ) * spawnDelay;
+	}
 
 	void Start() {
 		StartCoroutine(SpawnCarriedEnemy(enemyTypeHeld, totalEnemiesHeld, spawnDelay));

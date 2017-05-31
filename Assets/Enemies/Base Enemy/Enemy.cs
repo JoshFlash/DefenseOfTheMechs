@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
 	public int value;
 	public int startingWaypointNumber = 0;
 	public GameObject enemyDeathSparks;
+	public GameObject poisonEffect;
 	public bool isPoisoned;
 	public bool isSlowed;
 
@@ -53,7 +54,7 @@ public class Enemy : MonoBehaviour
 					poisoned = Poisoned(proj.poisonTicks, proj.poisonInterval, proj.poisonDamage);
 					StartCoroutine(poisoned);
 					if (proj.isSlowing) {
-						StartCoroutine(GetSlowed(proj.poisonTicks * proj.poisonTicks, proj.slowAmount));
+						StartCoroutine(GetSlowed(proj.poisonTicks * proj.poisonInterval, proj.slowAmount));
 					}
 				}
 			}
@@ -86,12 +87,21 @@ public class Enemy : MonoBehaviour
 	}
 
 	public IEnumerator Poisoned(float poisonTicks, float poisonInterval, float posionDamage) {
+
 		isPoisoned = true;
+
+		GameObject poisonParticles = Instantiate(poisonEffect, this.transform.position, Quaternion.identity);
+		poisonParticles.GetComponent<PoisonEffect>().parentEnemy = this.gameObject;
+		Destroy(poisonParticles, poisonInterval * poisonTicks);
+
+		GetComponent<SpriteRenderer>().color = new Color(0.7f, 1, 0.7f, 0.9f); 
 		while (ticksSincePoison < poisonTicks) {
 			yield return new WaitForSeconds(poisonInterval);
 			TakeDamage(posionDamage);
 			ticksSincePoison++;
 		}
+		GetComponent<SpriteRenderer>().color = new Color(1,1,1,1); 
+
 		isPoisoned = false;
 		ticksSincePoison = 0;
 	}
@@ -102,6 +112,7 @@ public class Enemy : MonoBehaviour
 		Destroy(gameObject, 0.02f);
 		EnemySpawner.enemiesSpawned--;
 		MoneyManager.CollectInLevelCash(value);
+		value = 0;
 	}
 
 }

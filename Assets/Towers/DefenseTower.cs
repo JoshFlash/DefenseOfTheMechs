@@ -206,7 +206,7 @@ public class DefenseTower : MonoBehaviour
 				case 0:
 					fireRate += fireRateBoost;
 					projectileThrust *= 1.2f;
-					gunWarmTime *= 0.8f;
+					gunWarmTime *= 0.7f;
 					MoneyManager.SpendInLevelCash(alphaUpgradeCost);
 					sellValue += (int)( 0.7 * alphaUpgradeCost );
 					alphaUpgradeCost = alphaUpgradeCosts[alphaUpgradeLevel+1];
@@ -238,7 +238,7 @@ public class DefenseTower : MonoBehaviour
 				case 0:
 					towerRange += towerRangeBoost;
 					projectileThrust *= 1.5f;
-					gunWarmTime *= 0.85f;
+					gunWarmTime *= 0.82f;
 					GetComponentInChildren<TowerRadial>().UpgradeSight();
 					MoneyManager.SpendInLevelCash(betaUpgradeCost);
 					sellValue += (int)( 0.7 * betaUpgradeCost );
@@ -248,7 +248,7 @@ public class DefenseTower : MonoBehaviour
 					towerRangeBoost *= 1.42f;
 					towerRange += towerRangeBoost;
 					gunLength *= 1.8f;
-					projectileThrust *= 1.5f;
+					projectileThrust *= 1.6f;
 					GetComponentInChildren<TowerRadial>().UpgradeSight();
 					maxAlphaUpgradeLevel = 1;
 					transform.localScale = new Vector3(transform.localScale.x * 0.96f, transform.localScale.y * 0.96f, 1);
@@ -257,7 +257,7 @@ public class DefenseTower : MonoBehaviour
 					betaUpgradeCost = betaUpgradeCosts[betaUpgradeLevel + 1];
 					break;
 				case 2:
-					gunWarmTime *= 0.8f;
+					gunWarmTime *= 0.7f;
 					projectileThrust *= 1.5f;
 					projectileDamage *= 2.02f;
 					projectileMultiHit = 2;
@@ -343,7 +343,7 @@ public class DefenseTower : MonoBehaviour
 				if (alphaUpgradeLevel >= 2) {
 					return "UPGRADE UNAVAILABLE";
 				}
-				return "Greatly increases Range of this mech & lazers fly faster - " + betaUpgradeCost + " Ƀ";
+				return "Greatly increases Range and Precision of this mech - " + betaUpgradeCost + " Ƀ";
 			case 2:
 				if (alphaUpgradeLevel >= 2) {
 					return "UPGRADE UNAVAILABLE";

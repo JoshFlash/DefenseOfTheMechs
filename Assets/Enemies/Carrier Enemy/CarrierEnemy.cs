@@ -7,8 +7,8 @@ using UnityEngine;
 public class CarrierEnemy : Enemy
 {
 
-	public int enemiesHeld;
-	public float spawnRate;
+	//public int enemiesHeld;
+	//public float spawnRate;
 	public GameObject deathSpawner;
 
 

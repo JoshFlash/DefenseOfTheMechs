@@ -149,7 +149,7 @@ public class UserController : MonoBehaviour
 	public void ToggleQuadTime() {
 		if (dev_GodSpeed) {
 			if (Input.GetKeyDown(KeyCode.LeftControl)) {
-				Time.timeScale = 4.2f;
+				Time.timeScale = 7.2f;
 			}
 			if (Input.GetKeyUp(KeyCode.LeftControl)) {
 				Time.timeScale = 1f;

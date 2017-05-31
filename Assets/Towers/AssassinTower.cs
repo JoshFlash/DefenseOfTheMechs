@@ -108,8 +108,7 @@ public class AssassinTower : DefenseTower
 					betaUpgradeCost = betaUpgradeCosts[betaUpgradeLevel + 1];
 					break;
 				case 1:
-					targetPoisonedEnemies = true;
-					poisonTicks += 3;
+					poisonTicks += 5;
 					projectileThrust *= 1.8f;
 					maxAlphaUpgradeLevel = 1;
 					gunLength += 0.2f;
@@ -118,7 +117,7 @@ public class AssassinTower : DefenseTower
 					betaUpgradeCost = betaUpgradeCosts[betaUpgradeLevel + 1];
 					break;
 				case 2:
-					poisonTicks += 4;
+					poisonTicks += 7;
 					poisonInterval *= 0.84f;
 					slowAmount = 0.6f;
 					MoneyManager.SpendInLevelCash(betaUpgradeCost);

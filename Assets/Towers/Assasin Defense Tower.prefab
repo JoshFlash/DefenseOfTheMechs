@@ -310,8 +310,8 @@ MonoBehaviour:
   betaUpgradeLevel: 0
   alphaUpgradeCost: 0
   betaUpgradeCost: 0
-  alphaUpgradeCosts: 0c000000180000002d000000
-  betaUpgradeCosts: 070000001300000020000000
+  alphaUpgradeCosts: 580000007a000000d2000000
+  betaUpgradeCosts: 3c000000aa000000fa000000
   sellValue: 2000
   priorityIndex: 0
   targetPriority: 0
@@ -336,7 +336,7 @@ MonoBehaviour:
   - {fileID: 21300018, guid: 2b1e84785d7cf8b4ca03e9f495905842, type: 3}
   - {fileID: 21300020, guid: 2b1e84785d7cf8b4ca03e9f495905842, type: 3}
   - {fileID: 21300022, guid: 2b1e84785d7cf8b4ca03e9f495905842, type: 3}
-  poisonDamage: 0.156
+  poisonDamage: 0.2345
   poisonInterval: 1
   projectileExtraRange: 0.3
   poisonTicks: 7

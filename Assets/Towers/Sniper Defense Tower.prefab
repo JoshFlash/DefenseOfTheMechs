@@ -304,14 +304,14 @@ MonoBehaviour:
   towerRange: 50
   towerRangeBoost: 30
   projectileThrust: 0
-  projectileDamage: 1.1
+  projectileDamage: 1.41
   projectileMultiHit: 1
   alphaUpgradeLevel: 0
   betaUpgradeLevel: 0
   alphaUpgradeCost: 0
   betaUpgradeCost: 0
-  alphaUpgradeCosts: 000000000000000000000000
-  betaUpgradeCosts: 000000000000000000000000
+  alphaUpgradeCosts: 6400000078000000b4000000
+  betaUpgradeCosts: 5a00000078000000b4000000
   sellValue: 140
   priorityIndex: 0
   targetPriority: 0

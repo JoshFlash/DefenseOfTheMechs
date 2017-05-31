@@ -45,7 +45,7 @@ public class EnemyController : MonoBehaviour
 	}
 	void LookAtWaypoint() {
 		transform.rotation *= Quaternion.Euler(0, 0, 1);
-		transform.up = Vector3.Slerp(transform.up,(nextWaypoint.transform.position - transform.position),Time.fixedDeltaTime*4.4f);
+		transform.up = Vector3.Slerp(transform.up,(nextWaypoint.transform.position - transform.position),Time.deltaTime*4.4f);
 		transform.rotation *= Quaternion.Euler(0, 0, 1);
 	}
 }

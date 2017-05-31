@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
 	public float poisonDamage;
 	public float poisonInterval;
 	public float poisonTicks;
-	public float slowAmount; // between 0 and 1
+	public float slowAmount; // % between 0 and 1
 
 	private Rigidbody2D rigidBody;
 	private float distanceTraversed;
@@ -38,7 +38,7 @@ public class Projectile : MonoBehaviour
 		if (collider.tag == "enemy" && this.tag == "projectile") {
 			multiHit--;
 			if (multiHit <= 0) {
-				Destroy(gameObject, 0.01f);
+				Destroy(gameObject);
 			}
 		}
 	}
