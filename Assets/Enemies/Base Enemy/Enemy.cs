@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 	public GameObject poisonEffect;
 	public bool isPoisoned;
 	public bool isSlowed;
+	public List<AudioClip> clips;
 
 	private int ticksSincePoison = 0;
 	private IEnumerator poisoned;
@@ -26,7 +27,7 @@ public class Enemy : MonoBehaviour
 		isSlowed = false;
 	}
 
-	protected void Start() {
+	protected virtual void Start() {
 		EnemyController ec = gameObject.AddComponent<EnemyController>();
 		if (speed > 0) { ec.maxSpeed = speed; }
 	}
@@ -35,7 +36,7 @@ public class Enemy : MonoBehaviour
 		distanceTraversed += speed * Time.deltaTime;
 	}
 
-	protected void OnTriggerEnter2D(Collider2D collider) {
+	protected virtual void OnTriggerEnter2D(Collider2D collider) {
 
 		Projectile proj = collider.gameObject.GetComponent<Projectile>();
 		if (proj != null) {
@@ -64,8 +65,11 @@ public class Enemy : MonoBehaviour
 	public void TakeDamage(float damage) {
 		health -= damage;
 		if (health <= 0) {
+			AudioSource.PlayClipAtPoint(clips[1], transform.position);
 			Die();
 		}
+		AudioSource.PlayClipAtPoint(clips[0], transform.position);
+
 	}
 
 	public IEnumerator GetStunned(float stunTime) {

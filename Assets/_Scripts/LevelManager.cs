@@ -7,6 +7,9 @@ public class LevelManager : MonoBehaviour
 {
 
 	public void LoadLevelByIndex(int buildIndex) {
+		if (buildIndex == 1) {
+			ResetStaticVariables.Reset();
+		}
 		SceneManager.LoadScene(buildIndex);
 	}
 

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Flash.Feather;
+using Tattva.Types;
 using UnityEngine;
 
 public class Waypoint : MonoBehaviour

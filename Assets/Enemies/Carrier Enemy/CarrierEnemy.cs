@@ -7,10 +7,8 @@ using UnityEngine;
 public class CarrierEnemy : Enemy
 {
 
-	//public int enemiesHeld;
-	//public float spawnRate;
-	public GameObject deathSpawner;
 
+	public GameObject deathSpawner;
 
 	protected override void Update() {
 		distanceTraversed += speed * Time.deltaTime;

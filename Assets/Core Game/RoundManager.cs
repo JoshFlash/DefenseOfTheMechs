@@ -15,8 +15,11 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-	public int dev_curRound;
+	//public int dev_curRound;
 	public List<Round> allRounds;
+
+	public AudioSource audioSrc;
+	public AudioClip roundOverSound;
 
 	public static int currentRound;
 	public static bool isRoundOver = true;
@@ -26,11 +29,9 @@ public class RoundManager : MonoBehaviour
 	[SerializeField] private List<EnemySpawner> allEnemySpawners;
 
 	private void Start() {
-		currentRound = dev_curRound;
-	}
-
-	public void ResetRounds() {
-		currentRound = 1;
+		audioSrc = GetComponent<AudioSource>();
+		audioSrc.clip = roundOverSound;
+		//currentRound = dev_curRound;
 	}
 
 	public void StartRoundButton() {
@@ -52,6 +53,7 @@ public class RoundManager : MonoBehaviour
 			yield return StartCoroutine(SpawnWave(wave));
 		}
 		yield return isRoundOver = true;
+		audioSrc.Play();
 		MoneyManager.CollectInLevelCash(round.roundValue);
 	}
 

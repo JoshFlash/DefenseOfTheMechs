@@ -37,7 +37,6 @@ public class DefenseTower : MonoBehaviour
 	protected List<Enemy> targetableEnemies;
 	[SerializeField]
 	protected Enemy enemyTarget;
-
 	[SerializeField]
 	protected float gunLength, gunOffset;
 	[SerializeField]
@@ -118,9 +117,8 @@ public class DefenseTower : MonoBehaviour
 			}
 		}
 
-		SortEnemiesByPriority(targetPriority);
-
 		if (targetableEnemies.Count > 0) {
+			SortEnemiesByPriority(targetPriority);
 			enemyTarget = targetableEnemies[0];
 			hasEnemyTarget = true;
 		}
@@ -131,11 +129,11 @@ public class DefenseTower : MonoBehaviour
 	}
 
 	static int SortByHealth(Enemy e1, Enemy e2) {
-		return e1.health.CompareTo(e2.health);
+		return ( ( e1.health * 400 ) + ( e1.distanceTraversed ) ).CompareTo(( e2.health * 400 ) + ( e2.distanceTraversed ));
 	}
 
 	static int SortBySpeed(Enemy e1, Enemy e2) {
-		return e1.speed.CompareTo(e2.speed);
+		return ( ( e1.speed * 400 ) + ( e1.distanceTraversed ) ).CompareTo(( e2.speed * 400 ) + ( e2.distanceTraversed ));
 	}
 
 	protected void SortEnemiesByPriority(TargetPriority targetPriority) {
@@ -172,14 +170,15 @@ public class DefenseTower : MonoBehaviour
 
 	protected virtual IEnumerator ShootAtEnemy(float delay) {
 		yield return new WaitForSeconds(delay);
+		delay = 1 / fireRate;
+		WaitForSeconds wait = new WaitForSeconds(delay);
 		while (hasEnemyTarget) {
 			FireProjectile();
-			delay = 1 / fireRate;
 			if (doubleShot) {
 				yield return new WaitForSeconds(0.1f);
 				FireProjectile();
 			}
-			yield return new WaitForSeconds(delay);
+			yield return wait;
 		}
 		isFiringAtEnemy = false;
 	}

@@ -136,6 +136,9 @@ MonoBehaviour:
     type: 2}
   isPoisoned: 0
   isSlowed: 0
+  clips:
+  - {fileID: 8300000, guid: 606e34b1267760f48a80eea91bacc457, type: 3}
+  - {fileID: 8300000, guid: 6abdc235f2993e44c8cb326bf4524959, type: 3}
   deathSpawner: {fileID: 1106750523054730, guid: 7a318810aca2d254689409100a580322,
     type: 2}
 --- !u!212 &212896690540000252
