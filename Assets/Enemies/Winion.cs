@@ -6,13 +6,13 @@ public class Winion : Enemy
 {
 
 	[SerializeField]
-	WinLoseManager WINMANAGER;
+	WinLoseManager winManager;
 
 
 	protected override void Start()
 	{
-		WINMANAGER = FindObjectOfType<WinLoseManager>();
-		WINMANAGER.Win();
+		winManager = FindObjectOfType<WinLoseManager>();
+		winManager.Win();
 	}
 
 	protected override void Update()

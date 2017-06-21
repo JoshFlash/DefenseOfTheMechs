@@ -6,7 +6,8 @@ using System.Text.RegularExpressions;
 namespace Tattva.Types
 {
 
-	class Utilities {
+	class Utilities
+	{
 
 		public static int ConvertToInt(string input) {
 

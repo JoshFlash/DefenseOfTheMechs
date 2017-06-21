@@ -15,7 +15,6 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-	//public int dev_curRound;
 	public List<Round> allRounds;
 
 	public AudioSource audioSrc;
@@ -31,7 +30,7 @@ public class RoundManager : MonoBehaviour
 	private void Start() {
 		audioSrc = GetComponent<AudioSource>();
 		audioSrc.clip = roundOverSound;
-		//currentRound = dev_curRound;
+		currentRound = 1;
 	}
 
 	public void StartRoundButton() {

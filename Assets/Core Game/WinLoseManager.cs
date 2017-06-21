@@ -11,34 +11,36 @@ public class WinLoseManager : MonoBehaviour
 	[SerializeField] GameObject winPanel;
 	[SerializeField] GameObject losePanel;
 	[SerializeField] GameObject homeButton;
+	[SerializeField] GameObject playButton;
+	[SerializeField] GameObject speedButton;
 
 
-	public void Win() 
-    {
+	public void Win() {
 		if (!winMessageReceived && !loseMessageReceived) {
 			winMessageReceived = true;
 			RunWinSequence();
 		}
 	}
-	public void Lose()
-	{
+	public void Lose() {
 		if (!loseMessageReceived) {
 			loseMessageReceived = true;
 			RunLoseSequence();
 		}
 	}
 
-	private void RunWinSequence()
-	{
+	private void RunWinSequence() {
 		winPanel.SetActive(true);
 		winPanel.transform.position = new Vector3(0, 0, -1);
 		GetComponent<AudioSource>().Play();
 		homeButton.SetActive(true);
 	}
-	private void RunLoseSequence()
-	{
+
+	private void RunLoseSequence() {
 		losePanel.SetActive(true);
 		losePanel.transform.position = new Vector3(0, 0, -1);
 		homeButton.SetActive(true);
+		playButton.SetActive(false);
+		speedButton.SetActive(false);
+		Time.timeScale = 0.8f;
 	}
 }

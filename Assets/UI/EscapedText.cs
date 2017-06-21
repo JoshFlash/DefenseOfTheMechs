@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EscapedText : MonoBehaviour
 {
-	public WinLoseManager LOSEMANAGER;
+	public WinLoseManager loseManager;
 	public Text text;
 	public static int allowed = 20;
 	public static int escaped = 0;
@@ -23,7 +23,7 @@ public class EscapedText : MonoBehaviour
 
 	public void SendLoseMessage()
 	{
-		LOSEMANAGER.Lose();
+		loseManager.Lose();
 	}
 
 }

@@ -18,7 +18,7 @@ public class UserController : MonoBehaviour
 
 
 	private void Awake() {
-		//Application.targetFrameRate = 80;
+		Application.targetFrameRate = 80;
 		contextMenu.SetActive(false);
 		towerMenu.SetActive(false);
 		upgradeMenu.SetActive(false);

@@ -1794,6 +1794,16 @@ Prefab:
       propertyPath: homeButton
       value: 
       objectReference: {fileID: 188369205}
+    - target: {fileID: 114923837152745836, guid: 945f3e09220746a4ba4da85163c26e47,
+        type: 2}
+      propertyPath: playButton
+      value: 
+      objectReference: {fileID: 2101003412}
+    - target: {fileID: 114923837152745836, guid: 945f3e09220746a4ba4da85163c26e47,
+        type: 2}
+      propertyPath: speedButton
+      value: 
+      objectReference: {fileID: 515519080}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 945f3e09220746a4ba4da85163c26e47, type: 2}
   m_IsPrefabParent: 0
@@ -2943,14 +2953,15 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1370}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1678499286}
   m_Father: {fileID: 726448531}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 209, y: 251}
-  m_SizeDelta: {x: 330, y: 119}
+  m_AnchoredPosition: {x: 207, y: 251}
+  m_SizeDelta: {x: 325, y: 119}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &459671901
 MonoBehaviour:
@@ -2977,7 +2988,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8455882, g: 0.09948096, b: 0.09948096, a: 1}
+  m_Color: {r: 0.9705882, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2987,7 +2998,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: e763e59467000324bb5c548b77da1c42, type: 3}
     m_FontSize: 48
-    m_FontStyle: 0
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 63
@@ -8868,6 +8879,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointNumber: 0
+--- !u!1 &1678499285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1678499286}
+  - component: {fileID: 1678499288}
+  - component: {fileID: 1678499287}
+  m_Layer: 5
+  m_Name: Backdrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1678499286
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1678499285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 459671900}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -16, y: 5}
+  m_SizeDelta: {x: 309, y: 109}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1678499287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1678499285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.04411763, g: 0.04411763, b: 0.04411763, a: 0.434}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1678499288
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1678499285}
 --- !u!1 &1682653560
 GameObject:
   m_ObjectHideFlags: 0
@@ -11554,7 +11633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88ecfc4022074234c979daa041f57e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dev_GodSpeed: 1
+  dev_GodSpeed: 0
   alphaButtonPressed: 0
   betaButtonPressed: 0
   contextMenu: {fileID: 216854701}
@@ -11584,4 +11663,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23425e61c57539343a91dd3d8c6fbdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startCash: 21900
+  startCash: 219

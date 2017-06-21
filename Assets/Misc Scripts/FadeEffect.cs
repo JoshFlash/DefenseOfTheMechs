@@ -14,8 +14,8 @@ public class FadeEffect : MonoBehaviour
 
 	void Awake () {
 		fadeOverlay = GetComponent<Image>();
-		if		(fadeOut)	{ fadeOverlay.color = new Color(0, 0, 0, 0); } 
-		else if	(!fadeOut)	{ fadeOverlay.color = new Color(0, 0, 0, 1); }
+		if		(fadeOut)	fadeOverlay.color = new Color(0, 0, 0, 0);
+		else if	(!fadeOut)	fadeOverlay.color = new Color(0, 0, 0, 1);
 	}
 
 	void Update () {
@@ -30,8 +30,8 @@ public class FadeEffect : MonoBehaviour
 
 	void Fade() {
 		float alphaChange = Time.deltaTime / fadeTime;
-		if		(fadeOut)	{ fadeOverlay.color += new Color(0, 0, 0, alphaChange); } 
-		else if (!fadeOut)	{ fadeOverlay.color -= new Color(0, 0, 0, alphaChange); }
+		if		(fadeOut)	fadeOverlay.color += new Color(0, 0, 0, alphaChange);
+		else if (!fadeOut)	fadeOverlay.color -= new Color(0, 0, 0, alphaChange);
 	}
 
 
